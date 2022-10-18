@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheetZones"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    app:behavior_peekHeight="50dp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainCollapse"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/round_bottom_shet"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp">
+
+        <ImageView
+            android:id="@+id/addzone"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="25dp"
+            app:layout_constraintBottom_toTopOf="@+id/listazonas"
+            app:layout_constraintEnd_toEndOf="@+id/btn_zones"
+            app:layout_constraintTop_toTopOf="@+id/cardViewBusquedazons"
+            app:srcCompat="@drawable/ic_icono_agregar">
+
+        </ImageView>
+        <TextView
+            android:id="@+id/btn_zones"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="zonas"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewBusquedazons"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/addzone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_zones">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchZones"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/btn_zones"
+                app:layout_constraintTop_toBottomOf="@+id/btn_zones"
+                tools:ignore="InvalidId">
+
+            </androidx.appcompat.widget.SearchView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listazonas"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:paddingBottom="20dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewBusquedazons">
+
+        </androidx.recyclerview.widget.RecyclerView>
+        <!--   <View
+
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:layout_marginStart="125dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="125dp"
+            android:background="#535353"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </View>-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="gone"
+            android:id="@+id/editZone"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_zones">
+
+            <ImageView
+                android:id="@+id/tipezone"
+                android:layout_width="98dp"
+                android:layout_height="99dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/circles"
+                tools:ignore="MissingConstraints">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/nameEstablecimiento1"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="Nombre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tipezone"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/nameEstablecimiento2"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="150dp"
+                android:text="Color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tipezone"
+                app:layout_constraintTop_toBottomOf="@+id/nameEstablecimiento1">
+
+            </TextView>
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/nameEstablecimiento3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="tipo"
+                android:background="@drawable/circles"
+                app:layout_constraintStart_toStartOf="@+id/nameEstablecimiento2"
+                app:layout_constraintTop_toBottomOf="@+id/nameEstablecimiento2">
+
+            </ImageView>
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/nameEstablecimiento4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/poligons"
+                android:text="Tipo"
+                app:layout_constraintStart_toEndOf="@+id/nameEstablecimiento3"
+                app:layout_constraintTop_toBottomOf="@+id/nameEstablecimiento2">
+
+            </ImageView>
+
+            <Switch
+                android:id="@+id/tipeSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="0"
+                android:focusable="false"
+                android:gravity="end"
+                android:padding="10dp"
+                android:thumb="@drawable/round_switch"
+                android:track="@drawable/round_track"
+                app:layout_constraintBottom_toBottomOf="@+id/textView18"
+                app:layout_constraintEnd_toStartOf="@+id/view"
+                app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+            <TextView
+                android:id="@+id/textViewRatio"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:gravity="center"
+                android:text=" R:"
+                android:textAlignment="textStart"
+                app:layout_constraintBottom_toBottomOf="@+id/textView18"
+                app:layout_constraintStart_toEndOf="@+id/textView18"
+                app:layout_constraintTop_toTopOf="@+id/textView18"
+                tools:ignore="RtlCompat">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/EditTextRatio"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:inputType="number"
+                android:imeOptions="actionDone"
+                android:textAlignment="textStart"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView18"
+                app:layout_constraintStart_toEndOf="@+id/textViewRatio"
+                app:layout_constraintTop_toTopOf="@+id/textView18"
+                tools:ignore="RtlCompat">
+
+            </EditText>
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="65dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="Circular"
+                android:textAlignment="textStart"
+                app:layout_constraintStart_toEndOf="@+id/tipezone"
+                app:layout_constraintTop_toBottomOf="@+id/nameEstablecimiento2"
+                tools:ignore="RtlCompat">
+
+            </TextView>
+
+
+            <!--<Switch
+                android:id="@+id/nameEstablecimiento5"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                app:layout_constraintStart_toStartOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/nameEstablecimiento2">
+
+            </Switch>-->
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/bluealfa"
+                android:text="Tipo"
+                app:layout_constraintBottom_toBottomOf="@+id/nameEstablecimiento2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/nameEstablecimiento2"
+                app:layout_constraintTop_toTopOf="@+id/nameEstablecimiento2">
+
+            </View>
+
+            <ImageButton
+                android:visibility="gone"
+                android:id="@+id/addnewitemlocation"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/shape_circle"
+                android:src="@drawable/ic_icono_agregar"
+                app:layout_constraintEnd_toEndOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/nameEstablecimiento2">
+
+            </ImageButton>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewdots"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tipezone">
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline85"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.50" />
+
+            <Button
+                android:id="@+id/cancelarnewzones"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/shape"
+                android:text="Cancelar"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline85"
+                app:layout_constraintStart_toStartOf="parent">
+
+            </Button>
+
+            <Button
+                android:id="@+id/buttonsave"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/shape_yelow"
+                android:text="Guardar"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline85">
+
+            </Button>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

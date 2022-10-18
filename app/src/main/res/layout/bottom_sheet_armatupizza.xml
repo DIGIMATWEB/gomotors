@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomsheet_armatupizza"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgcollage"
+    app:behavior_peekHeight="60dp"
+
+    app:layout_behavior="@string/bottom_sheet_behavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrainCover"
+            android:layout_width="200dp"
+            android:layout_height="550dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/shape_graywhite"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView51">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textViewarmatupizza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arma tu pizza"
+            android:textColor="@color/black"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/rvcomplementosarmatupizza"
+            app:layout_constraintStart_toStartOf="@+id/rvcomplementosarmatupizza"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/imageView51"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="3dp"
+            android:background="@drawable/dish"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewarmatupizza">
+
+        </ImageView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraingreen"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="3dp"
+            android:background="@color/alfa"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constrainblue">
+
+            <TextView
+                android:id="@+id/draggableitem"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/emptypizza"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrainblue"
+            android:layout_width="85dp"
+            android:layout_height="235dp"
+            android:layout_marginEnd="3dp"
+            android:background="@color/alfa"
+            app:layout_constraintBottom_toTopOf="@+id/rvtamañospizza"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewarmatupizza">
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/animationbg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/rvtamañospizza"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewarmatupizza">
+
+        </ImageView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineregister1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineregister2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.11" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineregister3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.89" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineregister4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvtamañospizza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toEndOf="@+id/constrainCover"
+            app:layout_constraintStart_toStartOf="@+id/constrainCover"
+            app:layout_constraintTop_toBottomOf="@+id/imageView51" />
+        <!--  android:background="@drawable/emptypizza"-->
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/rvArma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView51"
+            app:layout_constraintEnd_toEndOf="@+id/imageView51"
+            app:layout_constraintHorizontal_bias="0.53"
+            app:layout_constraintStart_toStartOf="@+id/imageView51"
+            app:layout_constraintTop_toTopOf="@+id/imageView51">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+        <TextView
+            android:id="@+id/preciarmatupizza"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginBottom="15dp"
+            android:text="$ 100.00"
+            android:textColor="@color/black"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/cardView13"
+            app:layout_constraintEnd_toEndOf="@+id/rvArma"
+            app:layout_constraintStart_toStartOf="@+id/rvArma">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/removearmatupizza"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/ic_minus"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView13"
+            app:layout_constraintEnd_toStartOf="@+id/cardView13"
+            app:layout_constraintTop_toTopOf="@+id/cardView13">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/addarmatupizza"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/ic_addplus"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView13"
+            app:layout_constraintStart_toEndOf="@+id/cardView13"
+            app:layout_constraintTop_toTopOf="@+id/cardView13">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/namePizzaarma"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imageView51"
+            app:layout_constraintEnd_toEndOf="@+id/constrainCover"
+            app:layout_constraintStart_toStartOf="@+id/constrainCover">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/namePizzaarmades"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineregister3"
+            app:layout_constraintStart_toStartOf="@+id/guidelineregister2"
+            app:layout_constraintTop_toBottomOf="@+id/namePizzaarma">
+
+        </TextView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView13"
+            android:layout_width="53dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="12dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/black"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/agregarTodo"
+            app:layout_constraintEnd_toEndOf="@+id/agregarTodo"
+            app:layout_constraintStart_toStartOf="@+id/agregarTodo">
+
+            <TextView
+                android:id="@+id/armatupizzaCount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="22dp">
+
+            </TextView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/addcomplements"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView21">
+
+            <ImageView
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ic_addplus"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </ImageView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvcomplementosarmatupizza"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="@+id/constrainCover"
+            app:layout_constraintStart_toStartOf="@+id/constrainCover"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:text="Complementos"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvtamañospizza">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/hidervcomplemnetos"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ic_cerrar"
+            android:backgroundTint="@color/colordeepGray"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/textView21"
+            app:layout_constraintStart_toEndOf="@+id/textView21">
+
+        </ImageView>
+        <Button
+            android:id="@+id/agregarTodo"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/shape_button_carrito"
+            android:text="Agregar"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/constrainCover"
+            app:layout_constraintEnd_toEndOf="@+id/constrainCover"
+            app:layout_constraintStart_toStartOf="@+id/constrainCover">
+
+        </Button>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

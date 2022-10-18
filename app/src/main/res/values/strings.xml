@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Gomotors</string>
+    <string name="title_activity_maps">Gomotors</string>
+    <string name="titleLogin">Gomotors</string>
+
+    <!--    Retrofit validations    -->
+    <string name="wrongSyntax">Error, la solicitud contiene sintaxis errónea</string>
+    <string name="unauthorizedRequest">Error, solicitud no autorizada</string>
+    <string name="resourceNotFound">Error, recurso no encontrado</string>
+    <string name="serverError">Error, se ha producido un error en la conexión con el servidor, intente más tarde</string>
+    <string name="unknownError">Error desconocido</string>
+    <string name="internetConection">Error, verifica tu conexión a internet</string>
+    <string name="invalidateFormatResponse">Error, la respuesta contiene un formato que no se puede leer</string>
+    <string name="unknownError1">Ocurrió un error desconocido</string>
+
+    <!--    FragmentLogin    -->
+    <string name="welcomeLogin">¡Bienvenido!</string>
+    <string name="textUser">Usuario</string>
+    <string name="textPassword">Contraseña</string>
+    <string name="textForgetPassword">¿Olvidó su contraseña?</string>
+    <string name="textEmptyDataLogin">Nombre de usuario o contraseña incorrectos. Intenta de nuevo.</string>
+    <string name="textEmptyDataResponse">Error, no se encontraron datos del usuario</string>
+    <string name="textWrongUserDataLogin">Nombre de usuario o contraseña incorrectos. Intenta de nuevo.</string>
+
+    <!-- Logout Dialog -->
+    <string name="logout_dialog_message">¿Estas seguro que quieres cerrar tu sesión?</string>
+    <string name="logout_dialog_btn_ok">Aceptar</string>
+    <string name="logout_dialog_btn_cancel">Cancelar</string>
+
+    <string name="bottom_sheet_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
+
+    <string name="profile_username">Nombre de Usuario</string>
+    <string name="profile_email">nombre_usuario@correo.com</string>
+    <!-- esta es la key de direcciones-->
+    <string name="api_key">AIzaSyB-zSevaCIjy5FOMfP9Z2GhpPYbt1CYsvo</string>
+
+    <string name="googleMapsPackage">com.google.android.apps.maps</string>
+    <string name="googleMapsPlayStore">https://play.google.com/store/apps/details?id=com.google.android.apps.maps</string>
+    <string name="wazePackage">com.waze</string>
+    <string name="wazePlayStore">https://play.google.com/store/apps/details?id=com.waze</string>
+
+</resources>
