@@ -42,7 +42,7 @@ public class Splahs extends AppCompatActivity implements  splashView{
         presenter=new presenterspalshImplements(this,getApplicationContext());
         presenter.requestsplashConfig();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, +WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        Glide.with(this).load(R.drawable.go).into(imageBackground);
+        Glide.with(this).load(R.mipmap.ic_logo).into(imageBackground);
         SharedPreferences preferences = getApplicationContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
         user      =  preferences.getString(GeneralConstantsV2.USER_PREFERENCES, null);
         telephone =preferences.getString(GeneralConstantsV2.TELEPHONE_PREFERENCE, null);
