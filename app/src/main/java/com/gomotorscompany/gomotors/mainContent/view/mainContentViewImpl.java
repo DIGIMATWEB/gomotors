@@ -1,17 +1,26 @@
 package com.gomotorscompany.gomotors.mainContent.view;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.gomotorscompany.gomotors.MyFirebaseMessagingService;
 import com.gomotorscompany.gomotors.Ordenar.model.newmenu.Complemento;
 import com.gomotorscompany.gomotors.Ordenar.view.ordenarViewImpl;
 import com.gomotorscompany.gomotors.R;
@@ -22,11 +31,15 @@ import com.gomotorscompany.gomotors.menu.view.FragmentNavigationButtonsMenu;
 import com.gomotorscompany.gomotors.miscompras.view.miscompras;
 import com.gomotorscompany.gomotors.pedido.view.pedido;
 import com.gomotorscompany.gomotors.retrofit.GeneralConstantsV2;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class mainContentViewImpl extends AppCompatActivity  {
+    public static final String TAG = mainContentViewImpl.class.getSimpleName();
     private FragmentManager manager;
     private FragmentTransaction transaction;
     private Context context;
@@ -78,6 +91,27 @@ private  FragmentNavigationButtonsMenu fg;
             }
         };
         // completado();
+
+//region firebase
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+                        String msg = token;
+                        Log.d("tokenfirebase", msg);
+                        //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+        //endregion firebase
     }
 
     private void showFragmentDashboard() {
@@ -235,4 +269,34 @@ private  FragmentNavigationButtonsMenu fg;
     }
     public void goToordenes(){ordenes();}
 
+
+
+//region firebase
+    private final ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    // FCM SDK (and your app) can post notifications.
+                } else {
+                    // TODO: Inform user that that your app will not show notifications.
+                }
+            });
+
+    private void askNotificationPermission() {
+        // This is only necessary for API level >= 33 (TIRAMISU)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
+                    PackageManager.PERMISSION_GRANTED) {
+                // FCM SDK (and your app) can post notifications.
+            } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
+                // TODO: display an educational UI explaining to the user the features that will be enabled
+                //       by them granting the POST_NOTIFICATION permission. This UI should provide the user
+                //       "OK" and "No thanks" buttons. If the user selects "OK," directly request the permission.
+                //       If the user selects "No thanks," allow the user to continue without notifications.
+            } else {
+                // Directly ask for the permission
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            }
+        }
+      }
+      //endregion
     }

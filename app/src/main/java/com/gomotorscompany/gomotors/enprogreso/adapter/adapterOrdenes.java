@@ -117,7 +117,15 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
     public int getItemCount() {
         return data.size();
     }
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView orden,nombreRepartidor,direccion,descripcionPaquete,fecha,statusorden;
         CardView cardOrder;

@@ -136,7 +136,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
     }
     private void settext() {
         textoorden=findViewById(R.id.textView28);
-        textoorden.setText("Oreden: "+numerodeorden);
+        textoorden.setText("Orden: "+numerodeorden);
 
         textofecha=findViewById(R.id.textView29);
         textofecha.setText(fechadelpedido);

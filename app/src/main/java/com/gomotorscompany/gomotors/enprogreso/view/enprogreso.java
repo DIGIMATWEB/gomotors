@@ -192,7 +192,14 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
         {
 
         }
+        if(adapter!=null)
+        {
+            adapter.notifyDataSetChanged();
+        }else
+        {
             filldata(dataorders);
+        }
+
             fillChart(dataorders);
 
         }
@@ -255,6 +262,8 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rvpendientes.setLayoutManager(layoutManager);
         rvpendientes.setAdapter(adapterpendings);
+
+       // adapter.setStateRestorationPolicy(RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY);
     }
     public void asignarOrden(int idorder)
     {

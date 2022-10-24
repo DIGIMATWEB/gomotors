@@ -2,6 +2,7 @@ package com.gomotorscompany.gomotors.enprogreso.interactor;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.gomotorscompany.gomotors.enprodresodetail.model.repartidor.requetsliberar;
@@ -50,8 +51,10 @@ public class ordersInteractorImpl  implements ordersInteractor{
         String token     = preferences.getString(GeneralConstantsV2.TOKEN_PREFERENCES, null);
         if(token!=null)
         {
+            Log.e("token",""+token);
             setNewPosition(token,latitude,longitude);
         }
+
     }
 
     private void setNewPosition(String token, double latitude, double longitude) {

@@ -31,21 +31,24 @@
                 android:fontFamily="@font/roboto_bold"
                 android:text="Sucursal:"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/sucursalname"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:fontFamily="@font/roboto_bold"
+                android:singleLine="true"
                 android:text="name"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
                 app:layout_constraintStart_toEndOf="@+id/txvClientName1"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,6 +73,13 @@
                 tools:ignore="UseSwitchCompatOrMaterialXml">
 
             </Switch>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.8" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

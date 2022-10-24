@@ -179,7 +179,7 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
                         // Sign in succeeded, proceed with account
                         GoogleSignInAccount acct = task.getResult();
                         Log.e("loginGoogle","data"+"\n"+acct.getDisplayName()+"\n"+acct.getId()+"\n"+acct.getEmail()+"\n"+acct.getIdToken()+"\n"+acct.getPhotoUrl()+"\n"
-                                +acct.getFamilyName()+"\n"+acct.getServerAuthCode()+"\n"+acct.getGivenName()+"\n"+acct.zaa()+"\n"+acct.zab()+"\n"+acct.getAccount());
+                                +acct.getFamilyName()+"\n"+acct.getServerAuthCode()+"\n"+acct.getGivenName()+"\n"+acct.getAccount());
                         Toast.makeText(getContext(), ""+acct.getDisplayName()+"\n"+acct.getId(), Toast.LENGTH_SHORT).show();
 
                     } else {
