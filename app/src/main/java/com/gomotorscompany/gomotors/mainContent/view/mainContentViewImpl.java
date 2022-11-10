@@ -93,12 +93,25 @@ private  FragmentNavigationButtonsMenu fg;
         // completado();
 
 //region firebase
+        FirebaseMessaging.getInstance().subscribeToTopic("all")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Subscribed";
+                        if (!task.isSuccessful()) {
+                            msg = "Subscribe failed";
+                        }
+                        Log.e("firebase","suscription: "+ msg);
+                        //Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
                     public void onComplete(@NonNull Task<String> task) {
                         if (!task.isSuccessful()) {
-                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            Log.e(TAG, "Fetching FCM registration token failed", task.getException());
                             return;
                         }
 
@@ -108,7 +121,8 @@ private  FragmentNavigationButtonsMenu fg;
                         // Log and toast
                         String msg = token;
                         Log.d("tokenfirebase", msg);
-                        //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        Log.e("firebase","token firebase: "+msg);
+                                //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
         //endregion firebase

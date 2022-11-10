@@ -53,7 +53,7 @@ public class LoginInteractorImpl implements LoginInteractor {
             @Override
             public void onResponse(Call<LoginResponseV2> call, Response<LoginResponseV2> response) {
              //   Toast.makeText(context, "response: "+response.body().getResponseCode(), Toast.LENGTH_SHORT).show();
-                validationCodeLogin(response,context);
+                validationCodeLogin(response,context,user);
 
             }
 
@@ -66,17 +66,17 @@ public class LoginInteractorImpl implements LoginInteractor {
 
     }
 
-    private void validationCodeLogin(Response<LoginResponseV2> response, Context context) {
+    private void validationCodeLogin(Response<LoginResponseV2> response, Context context, String email) {
         if (response != null) {
             if (RetrofitValidationsV2.checkSuccessCode(response.code())) {
-                loginresponseData(response,context);
+                loginresponseData(response,context,email);
             }else {
                // Toast.makeText(context, "" + RetrofitValidationsV2.getErrorByStatus(response.code(), context), Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private void loginresponseData(Response<LoginResponseV2> response, Context context) {
+    private void loginresponseData(Response<LoginResponseV2> response, Context context, String email) {
         LoginResponseV2 myresponse=response.body();
         if(myresponse!=null)
         {
@@ -98,6 +98,7 @@ public class LoginInteractorImpl implements LoginInteractor {
 
                 editor.putString(GeneralConstantsV2.USER_PREFERENCES, nombre);
                 editor.putString(GeneralConstantsV2.TELEPHONE_PREFERENCE, telefono);
+                editor.putString(GeneralConstantsV2.EMAIL_PREFERENCES, email);
                 editor.putString(GeneralConstantsV2.TOKEN_PREFERENCES, token);
                 editor.putString(GeneralConstantsV2.LEVEL_PERMISIONS, String.valueOf(permisionID));
 

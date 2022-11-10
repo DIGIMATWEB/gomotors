@@ -100,6 +100,7 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
         btnLogin = view.findViewById(R.id.btn_login);
         loader = new ProgressDialog(getActivity());
         registrateaqui=view.findViewById(R.id.Registrateaqui);
+        registrateaqui.setVisibility(View.GONE);
         signInButton=view.findViewById(R.id.bottonGoogle);
         //signInButton.setColorScheme(SignInButton.COLOR_DARK);
         signInButton.setOnClickListener(new View.OnClickListener() {

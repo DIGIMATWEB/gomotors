@@ -192,7 +192,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
     private void setColorSemaforImage() {
         if(semaforodelaorden==1)
         {
-            Glide.with(context).load(R.drawable.ic_pizzastatus6cancelado).into(imagesemaforo) ;
+            Glide.with(context).load(R.drawable.ic_goblack).into(imagesemaforo) ;//ic_pizzastatus6cancelado
             buttonenpointOrder2.setText("Recolectar");/**  aceptar orden*/
             hidebutonscallandmensage();
             if(gerarquiaint==2)
@@ -206,7 +206,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         }
         else if(semaforodelaorden==2)
         {
-            Glide.with(context).load(R.drawable.ic_pizzastatus1recolectar).into(imagesemaforo) ;
+            Glide.with(context).load(R.drawable.ic_gogray).into(imagesemaforo) ;//ic_pizzastatus1recolectar
             buttonenpointOrder2.setText("En cola");
             hidebutonscallandmensage();
             if(gerarquiaint==2)
@@ -218,7 +218,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
 
         }else if(semaforodelaorden==3)
         {
-            Glide.with(context).load(R.drawable.ic_pizzastatus2encola).into(imagesemaforo) ;
+            Glide.with(context).load(R.drawable.ic_goyellow).into(imagesemaforo) ;//ic_pizzastatus2encola
             buttonenpointOrder2.setText("En progreso");
             hidebutonscallandmensage();
             if(gerarquiaint==2)
@@ -230,7 +230,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         }
         else if(semaforodelaorden==4)
         {
-            Glide.with(context).load(R.drawable.ic_pizzastatus3enprogreso).into(imagesemaforo) ;
+            Glide.with(context).load(R.drawable.ic_goyellow).into(imagesemaforo) ;//ic_pizzastatus3enprogreso
             buttonenpointOrder2.setText("Terminado");
             showbutonscallandmensage();
             if(gerarquiaint==2)
@@ -245,7 +245,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         }
         else if(semaforodelaorden==5)
         {
-            Glide.with(context).load(R.drawable.ic_pizzastatus4terminado).into(imagesemaforo) ;
+            Glide.with(context).load(R.drawable.ic_goblack).into(imagesemaforo) ;//ic_pizzastatus4terminado
             buttonenpointOrder2.setVisibility(View.GONE);
             buttonenpointOrder.setVisibility(View.GONE);
             hidecancelOrder();
@@ -257,7 +257,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         }
         else if(semaforodelaorden==6)
         {
-            Glide.with(context).load(R.drawable.ic_pizzastatus5noentregado).into(imagesemaforo) ;
+            Glide.with(context).load(R.drawable.ic_goblack).into(imagesemaforo) ;//ic_pizzastatus5noentregado
             buttonenpointOrder2.setVisibility(View.GONE);
             hidebutonscallandmensage();
             hidegpsbuttongps();
@@ -268,7 +268,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
 
         }else if(semaforodelaorden==7)
         {
-            Glide.with(context).load(R.drawable.ic_pizzastatus6cancelado).into(imagesemaforo) ;
+            Glide.with(context).load(R.drawable.ic_goblack).into(imagesemaforo) ;//ic_pizzastatus6cancelado
             buttonenpointOrder2.setVisibility(View.GONE);
             hidecancelOrder();
             hidebutonscallandmensage();
@@ -279,7 +279,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         }
         else
         {
-            Glide.with(context).load(R.drawable.ic_pizzastatus6cancelado).into(imagesemaforo) ;
+            Glide.with(context).load(R.drawable.ic_goblack  ).into(imagesemaforo) ;//ic_pizzastatus6cancelado
             hidebutonscallandmensage();
             hidecancelOrder();
             hidegpsbuttongps();

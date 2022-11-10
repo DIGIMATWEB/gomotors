@@ -22,8 +22,9 @@ import com.google.android.gms.tasks.Task;
 
 public class Perfile extends Fragment implements View.OnClickListener{
     public static final String TAG = Perfile.class.getSimpleName();
-    private String user,telephone;
-    private TextView proifilename;
+    private String user,telephone,email;
+    private TextView proifilename,txt_pi_email;
+
     private GoogleSignInClient mSignInClient;
     private TextView logout;
     private Button BLayoutlogout;
@@ -40,15 +41,18 @@ public class Perfile extends Fragment implements View.OnClickListener{
     private void initView(View view) {
         SharedPreferences preferences = getContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
         logout=view.findViewById(R.id.textViewlogout);
+        txt_pi_email =view.findViewById(R.id.txt_pi_email);
         logout.setOnClickListener(this);
         BLayoutlogout=view.findViewById(R.id.BLayoutlogout);
         BLayoutlogout.setOnClickListener(this);
         user      =  preferences.getString(GeneralConstantsV2.USER_PREFERENCES, null);
         telephone =preferences.getString(GeneralConstantsV2.TELEPHONE_PREFERENCE, null);
+        email =preferences.getString(GeneralConstantsV2.EMAIL_PREFERENCES, null);
         proifilename=view.findViewById(R.id.txt_pi_names);
         if(user!=null)
         {
             proifilename.setText(user);
+            txt_pi_email.setText(email);
         }
 
     }
@@ -65,7 +69,11 @@ public class Perfile extends Fragment implements View.OnClickListener{
     private void gotoLogin()
     {
         SharedPreferences preferences = getContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
-        preferences.edit().clear().commit();
+        SharedPreferences.Editor editor=preferences.edit();
+        editor.clear();
+        editor.apply();
+        //preferences.edit().clear().commit();
+
         Intent intent = new Intent(getActivity(), LoginContainer.class);
         Bundle extras = intent.getExtras();
         if (extras != null) {
@@ -74,6 +82,7 @@ public class Perfile extends Fragment implements View.OnClickListener{
         }
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+
 
 
     }

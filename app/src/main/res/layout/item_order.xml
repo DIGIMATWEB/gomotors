@@ -90,22 +90,27 @@
 
             <TextView
                 android:id="@+id/txvStatusDescription1"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="EN TIEMPO"
+                android:singleLine="true"
+                android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="11sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txvDescription1" />
+                app:layout_constraintEnd_toEndOf="@+id/imageView31"
+                app:layout_constraintStart_toStartOf="@+id/imageView31"
+                app:layout_constraintTop_toBottomOf="@+id/imageView31" />
 
             <ImageView
                 android:id="@+id/imageView31"
-                android:layout_width="79dp"
+                android:layout_width="51dp"
                 android:layout_height="51dp"
                 android:layout_marginTop="6dp"
+                android:layout_marginEnd="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txvDate1"
-                app:srcCompat="@drawable/ic_pizzasvgstatus">
+                app:srcCompat="@drawable/ic_gogreen">
 
             </ImageView>
 

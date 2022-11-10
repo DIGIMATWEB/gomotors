@@ -52,33 +52,33 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
             holder.statusorden.setText(data.get(position).getStatus());
             if(data.get(position).getSemaforo()==1)
             {
-                Glide.with(context).load(R.drawable.ic_pizzastatus6cancelado).into(holder.imageView31) ;
+                Glide.with(context).load(R.drawable.ic_goblack).into(holder.imageView31) ;//ic_pizzastatus6cancelado
             }
             else if(data.get(position).getSemaforo()==2)
             {
-                Glide.with(context).load(R.drawable.ic_pizzastatus1recolectar).into(holder.imageView31) ;
+                Glide.with(context).load(R.drawable.ic_gogray).into(holder.imageView31) ;//ic_pizzastatus1recolectar
             }else if(data.get(position).getSemaforo()==3)
             {
-                Glide.with(context).load(R.drawable.ic_pizzastatus2encola).into(holder.imageView31) ;
+                Glide.with(context).load(R.drawable.ic_goyellow).into(holder.imageView31) ;//ic_pizzastatus2encola
             }
             else if(data.get(position).getSemaforo()==4)
             {
-                Glide.with(context).load(R.drawable.ic_pizzastatus3enprogreso).into(holder.imageView31) ;
+                Glide.with(context).load(R.drawable.ic_gogreen).into(holder.imageView31) ;//ic_pizzastatus3enprogreso
             }
             else if(data.get(position).getSemaforo()==5)
             {
-                Glide.with(context).load(R.drawable.ic_pizzastatus4terminado).into(holder.imageView31) ;
+                Glide.with(context).load(R.drawable.ic_goblack).into(holder.imageView31) ;//ic_pizzastatus4terminado
             }
             else if(data.get(position).getSemaforo()==6)
             {
-                Glide.with(context).load(R.drawable.ic_pizzastatus5noentregado).into(holder.imageView31) ;
+                Glide.with(context).load(R.drawable.ic_goblack).into(holder.imageView31) ;//ic_pizzastatus5noentregado
             }else if(data.get(position).getSemaforo()==7)
             {
-                Glide.with(context).load(R.drawable.ic_pizzastatus6cancelado).into(holder.imageView31) ;
+                Glide.with(context).load(R.drawable.ic_goblack).into(holder.imageView31) ;//ic_pizzastatus6cancelado
             }
             else
             {
-                Glide.with(context).load(R.drawable.ic_pizzastatus6cancelado).into(holder.imageView31) ;
+                Glide.with(context).load(R.drawable.ic_goblack).into(holder.imageView31) ;//ic_pizzastatus6cancelado
             }
 
             holder.cardOrder.setOnClickListener(new View.OnClickListener() {
