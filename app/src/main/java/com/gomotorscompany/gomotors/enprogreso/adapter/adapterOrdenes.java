@@ -42,7 +42,8 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
     @Override
     public void onBindViewHolder(@NonNull adapterOrdenes.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
             holder.orden.setText("Num. orden:"+String.valueOf( data.get(position).getOrdenNum()));
-            holder.nombreRepartidor.setText(""+data.get(position).getRepartidor());
+            holder.nombreRepartidor.setText(""+data.get(position).getNamesuc());//
+            holder.txvAddress11.setText(""+data.get(position).getRepartidor());
             holder.direccion.setText(data.get(position).getDireccion());
             holder.descripcionPaquete.setText(
                     "Paquetes : "+data.get(position).getPaquete().size()+" "+
@@ -101,6 +102,7 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
                     dataorder.putString("direccionBundle12", ""+data.get(position).getToken());
                     dataorder.putDouble("direccionBundle13", data.get(position).getLatsuc());
                     dataorder.putDouble("direccionBundle14", data.get(position).getLongsuc());
+                    dataorder.putString("direccionBundle15", data.get(position).getTelefono());
 
                     Intent intent = new Intent(context.getApplicationContext(), progresodetail.class);
                     intent.putExtras(dataorder);
@@ -127,7 +129,7 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
         return position;
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView orden,nombreRepartidor,direccion,descripcionPaquete,fecha,statusorden;
+        TextView orden,nombreRepartidor,direccion,txvAddress11,descripcionPaquete,fecha,statusorden;
         CardView cardOrder;
         ImageView imageView31;
         public ViewHolder(@NonNull View itemView) {
@@ -135,6 +137,7 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
             orden=itemView.findViewById(R.id.txvOrderId1);
             nombreRepartidor=itemView.findViewById(R.id.txvClientName1);
             direccion=itemView.findViewById(R.id.txvAddress1);
+            txvAddress11 =itemView.findViewById(R.id.txvAddress11);
             descripcionPaquete=itemView.findViewById(R.id.txvDescription1);
             fecha=itemView.findViewById(R.id.txvDate1);
             statusorden=itemView.findViewById(R.id.txvStatusDescription1);

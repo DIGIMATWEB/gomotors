@@ -45,10 +45,10 @@ public class progresdetailpresenterImpl implements progresdetailpresenter {
     }
 
     @Override
-    public void succesChangeStatus(int code) {
+    public void succesChangeStatus(int code,int status) {
         if(view!=null)
         {
-            view.setChangeStatus(code);
+            view.setChangeStatus(code,status);
         }
     }
 

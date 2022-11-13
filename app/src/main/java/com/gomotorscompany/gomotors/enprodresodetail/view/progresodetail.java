@@ -6,9 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -22,9 +24,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.gomotorscompany.gomotors.Dialogs.mapswaze.view.wazemaps;
 import com.gomotorscompany.gomotors.R;
+import com.gomotorscompany.gomotors.enprodresodetail.adapter.sectionsAdapter;
 import com.gomotorscompany.gomotors.enprodresodetail.presenter.progresdetailpresenter;
 import com.gomotorscompany.gomotors.enprodresodetail.presenter.progresdetailpresenterImpl;
 import com.gomotorscompany.gomotors.mainContent.view.mainContentViewImpl;
@@ -41,7 +45,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
 
     private Context context;
     private List<datagetOrders> ordenes;
-    private String numerodeorden,fechadelpedido,statusdelaorden,direccion,sucursalId,iduser;
+    private String numerodeorden,fechadelpedido,statusdelaorden,direccion,sucursalId,iduser,telefono;
     private int semaforodelaorden;
     private Double latitud,longitud,latclient,longclient,latsuc,longsuc;
     private List<Paquete> getPaquete;
@@ -58,6 +62,11 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
     private int gerarquiaint;
     private progresdetailpresenter presenter;
     private ProgressDialog progressDialog;
+
+    private sectionsAdapter sA;
+    private ViewPager2 pager;
+    private View viewrecolectar,viewEncola,viewenprogreso,viewterminado;
+    private  Drawable blackdot,whitedot;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +80,15 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
     private void initView() {
         Bundle bndl;
         bndl = getIntent().getExtras();
+        pager = (ViewPager2) findViewById(R.id.cardviewitem);
+        viewrecolectar=(View)findViewById(R.id.viewrecolectar);
+        viewEncola=(View)findViewById(R.id.viewEncola);
+        viewenprogreso=(View)findViewById(R.id.viewenprogreso);
+        viewterminado=(View)findViewById(R.id.viewterminado);
+        blackdot= getResources().getDrawable(R.drawable.shape_circle_process,context.getTheme());
+        whitedot= getResources().getDrawable(R.drawable.shape_circle_process_not,context.getTheme());
 
+       // filldataAdapter();
         if(bndl!=null)
         {
             numerodeorden=bndl.getString("direccionBundle1");
@@ -91,6 +108,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
             iduser=bndl.getString("direccionBundle12");
             latsuc=bndl.getDouble("direccionBundle13");
             longsuc=bndl.getDouble("direccionBundle14");
+            telefono=bndl.getString("direccionBundle15");
             Log.e("detalOrders",""+numerodeorden+"  "+fechadelpedido+"  "+statusdelaorden+"  "+semaforodelaorden+"  "+direccion+"  "+sucursalId+"  "+latclient+"  "+longclient+" "+getPaquete.size()+" "+getProductosU.size()+" "+getComplemeto.size());
 
         }else{
@@ -169,8 +187,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         button2.setVisibility(View.GONE);
         button3.setVisibility(View.GONE);
     }
-    private void showbutonscallandmensage()
-    {
+    private void showbutonscallandmensage()    {
         button2.setVisibility(View.VISIBLE);
         button3.setVisibility(View.VISIBLE);
     }
@@ -190,10 +207,16 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
     }
     private  void hidegpsbuttongps(){button.setVisibility(View.GONE);}
     private void setColorSemaforImage() {
+        Log.e("valuesemaforo",""+semaforodelaorden);
         if(semaforodelaorden==1)
         {
-            Glide.with(context).load(R.drawable.ic_goblack).into(imagesemaforo) ;//ic_pizzastatus6cancelado
+            Glide.with(context).load(R.drawable.ic_goblack).into(imagesemaforo) ;
             buttonenpointOrder2.setText("Recolectar");/**  aceptar orden*/
+
+            viewrecolectar.setBackground(blackdot);
+            viewEncola.setBackground(whitedot);
+            viewenprogreso.setBackground(whitedot);
+            viewterminado.setBackground(whitedot);
             hidebutonscallandmensage();
             if(gerarquiaint==2)
             {
@@ -208,6 +231,10 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         {
             Glide.with(context).load(R.drawable.ic_gogray).into(imagesemaforo) ;//ic_pizzastatus1recolectar
             buttonenpointOrder2.setText("En cola");
+            viewrecolectar.setBackground(blackdot);
+            viewEncola.setBackground(whitedot);
+            viewenprogreso.setBackground(whitedot);
+            viewterminado.setBackground(whitedot);
             hidebutonscallandmensage();
             if(gerarquiaint==2)
             {
@@ -220,6 +247,10 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         {
             Glide.with(context).load(R.drawable.ic_goyellow).into(imagesemaforo) ;//ic_pizzastatus2encola
             buttonenpointOrder2.setText("En progreso");
+            viewrecolectar.setBackground(blackdot);
+            viewEncola.setBackground(blackdot);
+            viewenprogreso.setBackground(whitedot);
+            viewterminado.setBackground(whitedot);
             hidebutonscallandmensage();
             if(gerarquiaint==2)
             {
@@ -232,6 +263,10 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         {
             Glide.with(context).load(R.drawable.ic_goyellow).into(imagesemaforo) ;//ic_pizzastatus3enprogreso
             buttonenpointOrder2.setText("Terminado");
+            viewrecolectar.setBackground(blackdot);
+            viewEncola.setBackground(blackdot);
+            viewenprogreso.setBackground(blackdot);
+            viewterminado.setBackground(whitedot);
             showbutonscallandmensage();
             if(gerarquiaint==2)
             {
@@ -246,6 +281,10 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         else if(semaforodelaorden==5)
         {
             Glide.with(context).load(R.drawable.ic_goblack).into(imagesemaforo) ;//ic_pizzastatus4terminado
+            viewrecolectar.setBackground(blackdot);
+            viewEncola.setBackground(blackdot);
+            viewenprogreso.setBackground(blackdot);
+            viewterminado.setBackground(blackdot);
             buttonenpointOrder2.setVisibility(View.GONE);
             buttonenpointOrder.setVisibility(View.GONE);
             hidecancelOrder();
@@ -258,6 +297,10 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         else if(semaforodelaorden==6)
         {
             Glide.with(context).load(R.drawable.ic_goblack).into(imagesemaforo) ;//ic_pizzastatus5noentregado
+            viewrecolectar.setBackground(blackdot);
+            viewEncola.setBackground(blackdot);
+            viewenprogreso.setBackground(blackdot);
+            viewterminado.setBackground(blackdot);
             buttonenpointOrder2.setVisibility(View.GONE);
             hidebutonscallandmensage();
             hidegpsbuttongps();
@@ -269,6 +312,11 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         }else if(semaforodelaorden==7)
         {
             Glide.with(context).load(R.drawable.ic_goblack).into(imagesemaforo) ;//ic_pizzastatus6cancelado
+            viewrecolectar.setBackground(blackdot);
+            viewEncola.setBackground(blackdot);
+            viewenprogreso.setBackground(blackdot);
+            viewterminado.setBackground(blackdot);
+
             buttonenpointOrder2.setVisibility(View.GONE);
             hidecancelOrder();
             hidebutonscallandmensage();
@@ -280,6 +328,11 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         else
         {
             Glide.with(context).load(R.drawable.ic_goblack  ).into(imagesemaforo) ;//ic_pizzastatus6cancelado
+            viewrecolectar.setBackground(blackdot);
+            viewEncola.setBackground(blackdot);
+            viewenprogreso.setBackground(blackdot);
+            viewterminado.setBackground(blackdot);
+
             hidebutonscallandmensage();
             hidecancelOrder();
             hidegpsbuttongps();
@@ -307,7 +360,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
-    public void setChangeStatus(int code) {
+    public void setChangeStatus(int code,int status) {
         if(code==105)
         {
             onBackPressed();
@@ -325,7 +378,46 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         progressDialog.setCancelable(false);
         progressDialog.show();
     }
+    void filldataAdapter()/// modulo de secciones adpater
+    {
+        sA=new sectionsAdapter(context);
+        pager.setAdapter(sA);
+        pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+            }
+            @Override
+            public void onPageSelected(final int position) {
+                super.onPageSelected(position);
 
+                //posrv=position;
+                sA.notifyDataSetChanged();
+
+
+                Log.e("finalcheck",""+position);
+                //movedots(position);
+               // titlefileds.setText(dataQuestions1.get(position).getDescTripMgmSection());
+//                if(position!=0) {
+//                }
+//                if(position==sizeArange-1)
+//                {
+//                    buttongochecklist.setVisibility(View.VISIBLE);
+//                }
+//                else
+//                {
+//                    buttongochecklist.setVisibility(View.GONE);
+//                }
+          }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                super.onPageScrollStateChanged(state);
+            }
+        });
+
+
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -357,6 +449,17 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
                 wazemaps externalGPSDialog = new wazemaps();
                 externalGPSDialog.setLocationVehicle(latclient,longclient,latsuc, longsuc,semaforodelaorden);/** esta es la ibicacion de la sucursal*/
                 externalGPSDialog.show(this.getSupportFragmentManager(), wazemaps.TAG);
+                break;
+            case R.id.button2:
+                Intent intentDial = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + telefono));
+                intentDial.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intentDial);
+                break;
+            case R.id.button3:
+                Intent intetnsms = new Intent(Intent.ACTION_SENDTO).setData(Uri.parse(String.format("smsto:%s", telefono))).putExtra("Mensaje", "Notificación gomotors");
+                intetnsms.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intetnsms);
+
                 break;
         }
     }

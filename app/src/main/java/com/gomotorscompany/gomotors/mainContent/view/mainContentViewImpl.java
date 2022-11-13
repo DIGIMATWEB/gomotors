@@ -69,11 +69,11 @@ private  FragmentNavigationButtonsMenu fg;
         else {
             if(gerarquia!=null) {
                 if (gerarquia.equals("1")) {
-                    showFragmentDashboard();// zonas(); solucionar permisos d
+                    ordenes();// showFragmentDashboard();// zonas(); solucionar permisos d
                 } else if (gerarquia.equals("2")) {
                     ordenes();
                 } else if (gerarquia.equals("3")) {
-                    showFragmentDashboard();
+                    ordenes();//showFragmentDashboard();
                 }
             }else
             {

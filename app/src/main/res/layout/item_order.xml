@@ -24,7 +24,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="112dp"
+            android:layout_height="130dp"
             android:background="@drawable/shapealfa"
             android:padding="6dp">
 
@@ -60,6 +60,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/txvOrderId1" />
 
             <TextView
+                android:id="@+id/txvAddress11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="name"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/imageView31"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txvClientName1" />
+
+            <TextView
                 android:id="@+id/txvAddress1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -72,7 +86,7 @@
                 app:layout_constraintBottom_toTopOf="@id/txvDescription1"
                 app:layout_constraintEnd_toStartOf="@+id/imageView31"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txvClientName1" />
+                app:layout_constraintTop_toBottomOf="@+id/txvAddress11" />
 
             <TextView
                 android:id="@+id/txvDescription1"

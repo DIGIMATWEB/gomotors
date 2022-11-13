@@ -5,7 +5,7 @@ public interface progresdetailpresenter {
     void liberarRepartidor();
 
     void setposition(double latitude, double longitude);
-    void succesChangeStatus(int code);
+    void succesChangeStatus(int code,int status);
 
     void showprogresdialog();
     void hideprogresdialog();

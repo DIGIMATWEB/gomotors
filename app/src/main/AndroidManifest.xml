@@ -14,10 +14,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" tools:node="remove"/>
-    <queries>
-        <package android:name="com.google.android.apps.maps" />
-        <package android:name="com.waze" />
-        <!-- Browser -->
+    <!--<uses-permission android:name="android.permission.SEND_SMS"/>-->
+    <!--<uses-permission android:name="android.permission.CALL_PHONE" />-->
+
+   <queries>
+       <package android:name="com.google.android.apps.maps" />
+       <package android:name="com.waze" />
+       <!-- Browser -->
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="http" />

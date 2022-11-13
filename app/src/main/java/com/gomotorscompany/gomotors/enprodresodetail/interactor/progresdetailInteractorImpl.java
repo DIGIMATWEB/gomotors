@@ -41,7 +41,7 @@ public class progresdetailInteractorImpl implements progresdetailInteractor{
         call.enqueue(new Callback<responseChangeStatus>() {
             @Override
             public void onResponse(Call<responseChangeStatus> call, Response<responseChangeStatus> response) {
-                validateresponsechangestatus(response,context);
+                validateresponsechangestatus(response,context,status);
             }
 
             @Override
@@ -52,18 +52,18 @@ public class progresdetailInteractorImpl implements progresdetailInteractor{
 
     }
 
-    private void validateresponsechangestatus(Response<responseChangeStatus> response, Context context) {
+    private void validateresponsechangestatus(Response<responseChangeStatus> response, Context context, int status) {
         if (response != null) {
 
             if (RetrofitValidationsV2.checkSuccessCode(response.code())) {
-                getdata(response, context);
+                getdata(response, context,status);
             } else {
                 Toast.makeText(context, "" + RetrofitValidationsV2.getErrorByStatus(response.code(), context), Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private void getdata(Response<responseChangeStatus> response, Context context) {
+    private void getdata(Response<responseChangeStatus> response, Context context, int status) {
           responseChangeStatus respons=response.body();
                 if(respons!=null)
                 {
@@ -73,7 +73,7 @@ public class progresdetailInteractorImpl implements progresdetailInteractor{
 
                     }else if(responsCode.equals("OK"))
                     {
-                        presenter.succesChangeStatus(105);
+                        presenter.succesChangeStatus(105,status);
                         Toast.makeText(context, "succesnew location driver", Toast.LENGTH_SHORT).show();
                     }
                 }

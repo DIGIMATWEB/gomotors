@@ -47,6 +47,8 @@ public class datagetOrders implements Serializable{// implements Serializable
     @SerializedName("long_client")
     @Expose
     private Double longuitud;
+
+
     @SerializedName("repartidorAsignado")
     @Expose
     private Integer idRepartidor;
@@ -62,9 +64,13 @@ public class datagetOrders implements Serializable{// implements Serializable
     @SerializedName("complementos")
     @Expose
     private List<Complemeto> complemeto = null;
+    @SerializedName("telefono")
+    @Expose
+    private String telefono;
 
-
-    public datagetOrders(Integer semaforo,String status,String token, Integer ordenNum, String fecha, String direccion, String suc, String namesuc,Double latsuc,Double longsuc, Double latitud, Double longuitud,Integer idRepartidor,String repartidor, List<Paquete> paquete, List<ProductosU> productosU, List<Complemeto> complemeto) {
+    public datagetOrders(Integer semaforo,String status,String token, Integer ordenNum, String fecha, String direccion, String suc, String namesuc,
+                         Double latsuc,Double longsuc, Double latitud, Double longuitud,Integer idRepartidor,String repartidor, List<Paquete> paquete,
+                         List<ProductosU> productosU, List<Complemeto> complemeto,String telefono) {
         super();
         this.semaforo=semaforo;
         this.status=status;
@@ -83,8 +89,16 @@ public class datagetOrders implements Serializable{// implements Serializable
         this.paquete = paquete;
         this.productosU = productosU;
         this.complemeto = complemeto;
+        this.telefono=telefono;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
     public String getToken() {
         return token;
     }
