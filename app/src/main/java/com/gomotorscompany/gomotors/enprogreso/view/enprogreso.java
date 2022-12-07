@@ -63,6 +63,7 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
     private int pendientesSize;
     private Handler handler = new Handler();
     private Runnable runnable;
+    private ImageView closependingorders;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -118,6 +119,8 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
         rvpendientes =view.findViewById(R.id.rvpendientes);
         chart=view.findViewById(R.id. chart);
         chart.setOnClickListener(this);
+        closependingorders=view.findViewById(R.id.closependingorders);
+        closependingorders.setOnClickListener(this);
         pieChart2=view.findViewById(R.id.pieChart2);
         constrainpiechr= view.findViewById(R.id. constrainpiechr);
         constrainpiechr.setVisibility(View.GONE);
@@ -360,6 +363,12 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
                     }
                 }
 
+                break;
+            case R.id.closependingorders:
+                if(dialogpendientes.getVisibility()==View.VISIBLE)
+                {
+                    dialogpendientes.setVisibility(View.GONE);
+                }
                 break;
             case R.id.dialogpendientes:
                 break;

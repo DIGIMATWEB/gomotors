@@ -288,7 +288,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView">
 
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginBottom="195dp"
+            android:background="@drawable/ic_cerrar"
+            android:elevation="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView4"
+            app:layout_constraintEnd_toEndOf="@+id/closependingorders"
+            app:layout_constraintStart_toStartOf="@+id/closependingorders"
+            app:layout_constraintTop_toTopOf="@+id/closependingorders">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/closependingorders"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="195dp"
+            android:background="@drawable/shape_circle"
+            android:elevation="7dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView4"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </ImageView>
+
+
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView4"
             android:layout_width="320dp"
             android:layout_height="220dp"
             app:cardBackgroundColor="@color/white"
