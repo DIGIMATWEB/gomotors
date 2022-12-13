@@ -456,10 +456,14 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
                 context.startActivity(intentDial);
                 break;
             case R.id.button3:
-                Intent intetnsms = new Intent(Intent.ACTION_SENDTO).setData(Uri.parse(String.format("smsto:%s", telefono))).putExtra("Mensaje", "Notificación gomotors");
+               /* Intent intetnsms = new Intent(Intent.ACTION_SENDTO).setData(Uri.parse(String.format("smsto:%s", telefono))).putExtra("Mensaje", "Notificación gomotors");
                 intetnsms.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intetnsms);
-
+                context.startActivity(intetnsms);*/
+                /**include  spinner to chat*/
+                /**
+                 *         asignando asignandopedido=new asignando();
+                 *         asignandopedido.show(getActivity().getSupportFragmentManager(), asignando.TAG);
+                 *         */
                 break;
         }
     }

@@ -185,7 +185,10 @@
         <entry key="app/src/main/res/layout/activity_login_container.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/activity_splashcreen.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/activityagregar.xml" value="0.3453125" />
-        <entry key="app/src/main/res/layout/detail_order.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/asignando_pedido.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/layout/bottom_sheet_map.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/layout/chat_layout.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/layout/detail_order.xml" value="0.18" />
         <entry key="app/src/main/res/layout/detail_order_progress.xml" value="0.33" />
         <entry key="app/src/main/res/layout/en_ordenes.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/en_progreso.xml" value="0.33" />
