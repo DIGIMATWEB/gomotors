@@ -237,7 +237,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="¿Aun  no tienes cuenta?" />
-
+        <TextView
+            android:id="@+id/repartidor"
+            style="@style/LoginText"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quiero ser repartidor" />
         <TextView
             android:id="@+id/Registrateaqui"
             style="@style/LoginText"

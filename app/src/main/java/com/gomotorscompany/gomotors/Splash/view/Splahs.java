@@ -11,6 +11,7 @@ import com.gomotorscompany.gomotors.Login.view.LoginContainer;
 import com.gomotorscompany.gomotors.Splash.presenter.presenterspalshImplements;
 import com.gomotorscompany.gomotors.Splash.presenter.presentersplash;
 import com.gomotorscompany.gomotors.mainContent.view.mainContentViewImpl;
+import com.gomotorscompany.gomotors.pedidoExpres.view.expres;
 import com.gomotorscompany.gomotors.retrofit.GeneralConstantsV2;
 import com.bumptech.glide.Glide;
 
@@ -107,13 +108,16 @@ public class Splahs extends AppCompatActivity implements  splashView{
 
             @Override
             public void run() {
-                if(token!=null){
+               /* if(token!=null){
                     goToMenu();
                 }
                 else
                 {
                     goToLoginContainer();
-                }
+                }*/
+                Intent intent = new Intent(getApplicationContext(), expres.class);
+                startActivity(intent);
+                finish();
             }
         },3000);
     }

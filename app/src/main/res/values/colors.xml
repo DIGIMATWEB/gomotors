@@ -27,5 +27,6 @@
     <color name="backgroundSwitchOff">#B8B8B8</color>
     <color name="colorgreenstatus">#00C48C</color>
     <color name="green">#4DED46</color>
-
+    <color name="black_overlay">#66000000</color>
+    <color name="red">#CC0000</color>
 </resources>

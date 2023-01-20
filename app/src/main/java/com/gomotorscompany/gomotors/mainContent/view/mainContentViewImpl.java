@@ -20,16 +20,19 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.gomotorscompany.gomotors.Login.view.LoginContainer;
 import com.gomotorscompany.gomotors.MyFirebaseMessagingService;
 import com.gomotorscompany.gomotors.Ordenar.model.newmenu.Complemento;
 import com.gomotorscompany.gomotors.Ordenar.view.ordenarViewImpl;
 import com.gomotorscompany.gomotors.R;
+import com.gomotorscompany.gomotors.Splash.view.Splahs;
 import com.gomotorscompany.gomotors.Zonas.view.zonasViewImpl;
 import com.gomotorscompany.gomotors.agregarCompra.view.agregarcompra;
 import com.gomotorscompany.gomotors.enprogreso.view.enprogreso;
 import com.gomotorscompany.gomotors.menu.view.FragmentNavigationButtonsMenu;
 import com.gomotorscompany.gomotors.miscompras.view.miscompras;
 import com.gomotorscompany.gomotors.pedido.view.pedido;
+import com.gomotorscompany.gomotors.pedidoExpres.view.expres;
 import com.gomotorscompany.gomotors.retrofit.GeneralConstantsV2;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -53,7 +56,7 @@ private  FragmentNavigationButtonsMenu fg;
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
         setContentView(R.layout.dinamic_menu);
-        showFragmentNavigationButtons();
+
 
         SharedPreferences preferencias = getApplicationContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
         String gerarquia = preferencias.getString(GeneralConstantsV2.LEVEL_PERMISIONS, null);
@@ -70,10 +73,17 @@ private  FragmentNavigationButtonsMenu fg;
             if(gerarquia!=null) {
                 if (gerarquia.equals("1")) {
                     ordenes();// showFragmentDashboard();// zonas(); solucionar permisos d
+                    showFragmentNavigationButtons();
                 } else if (gerarquia.equals("2")) {
                     ordenes();
+                    showFragmentNavigationButtons();
                 } else if (gerarquia.equals("3")) {
                     ordenes();//showFragmentDashboard();
+                    showFragmentNavigationButtons();
+                }else if (gerarquia.equals("4")) {
+                    Intent intent = new Intent(this, expres.class);
+                    startActivity(intent);
+                    finish();
                 }
             }else
             {

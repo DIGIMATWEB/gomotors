@@ -42,7 +42,7 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
     @Override
     public void onBindViewHolder(@NonNull adapterOrdenes.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
             holder.orden.setText("Num. orden:"+String.valueOf( data.get(position).getOrdenNum()));
-            holder.nombreRepartidor.setText(""+data.get(position).getNamesuc());//
+            holder.nombreRepartidor.setText(""+data.get(position).getSuc());//
             holder.txvAddress11.setText(""+data.get(position).getRepartidor());
             holder.direccion.setText(data.get(position).getDireccion());
             holder.descripcionPaquete.setText(

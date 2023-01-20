@@ -173,8 +173,12 @@
         <entry key="..\:/h2/descargas/Nueva carpeta (2)/Nueva carpeta/Quesipizzas/app/src/main/res/layout/window_design.xml" value="0.67" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3195" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3195" />
+        <entry key="app/src/main/res/drawable/round_bottom_shet.xml" value="0.157" />
+        <entry key="app/src/main/res/drawable/round_switch.xml" value="0.157" />
+        <entry key="app/src/main/res/drawable/round_track.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/shape.xml" value="0.193" />
         <entry key="app/src/main/res/drawable/shape_circle.xml" value="0.347" />
+        <entry key="app/src/main/res/drawable/shape_circle_audio.xml" value="0.156" />
         <entry key="app/src/main/res/drawable/shape_circle_gray.xml" value="0.347" />
         <entry key="app/src/main/res/drawable/shape_circle_process.xml" value="0.346" />
         <entry key="app/src/main/res/drawable/shape_circle_process_not.xml" value="0.346" />
@@ -182,13 +186,18 @@
         <entry key="app/src/main/res/drawable/shape_circle_red_no_border.xml" value="0.347" />
         <entry key="app/src/main/res/drawable/shape_circle_size_pizza.xml" value="0.347" />
         <entry key="app/src/main/res/drawable/shape_graywhite.xml" value="0.347" />
+        <entry key="app/src/main/res/drawable/shape_orangewhite.xml" value="0.157" />
+        <entry key="app/src/main/res/drawable/shape_redbutton.xml" value="0.157" />
+        <entry key="app/src/main/res/drawable/shape_yelow.xml" value="0.157" />
+        <entry key="app/src/main/res/layout/activity_container.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/activity_login_container.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/activity_splashcreen.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/activity_webview.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/layout/activityagregar.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/asignando_pedido.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/bottom_sheet_map.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/chat_layout.xml" value="0.18385416666666668" />
-        <entry key="app/src/main/res/layout/detail_order.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/detail_order.xml" value="0.33" />
         <entry key="app/src/main/res/layout/detail_order_progress.xml" value="0.33" />
         <entry key="app/src/main/res/layout/en_ordenes.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/en_progreso.xml" value="0.33" />
@@ -196,8 +205,14 @@
         <entry key="app/src/main/res/layout/item_orderspending.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/item_pager_questions.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/item_questions_type.xml" value="0.3182291666666667" />
+        <entry key="app/src/main/res/layout/item_zones.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/layout/itembanners.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/layout/key_introduce.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/layout/map_ordenes.xml" value="0.17083333333333334" />
+        <entry key="app/src/main/res/layout/menu_bar.xml" value="0.67" />
         <entry key="app/src/main/res/layout/pedido.xml" value="0.17083333333333334" />
+        <entry key="app/src/main/res/layout/pedido_expres.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/profile.xml" value="0.18489583333333334" />
       </map>
     </option>
   </component>

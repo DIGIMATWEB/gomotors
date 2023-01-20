@@ -37,53 +37,53 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                <ImageView
-                    android:id="@+id/img_pi"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="120dp"
-                    android:src="@drawable/ic_profile_default"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:id="@+id/img_pi"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="120dp"
+                        android:src="@drawable/ic_profile_default"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
-                <TextView
-                    android:id="@+id/txt_pi_names"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/profile_username"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_pi" />
+                    <TextView
+                        android:id="@+id/txt_pi_names"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/profile_username"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_pi" />
 
-                <TextView
-                    android:id="@+id/txt_pi_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/profile_email"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_pi_names" />
+                    <TextView
+                        android:id="@+id/txt_pi_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="6dp"
+                        android:text="@string/profile_email"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_pi_names" />
 
-                <TextView
-                    android:id="@+id/txtBienvenida"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="@color/white"
-                    android:text="Bienvenido"
-                    app:layout_constraintBottom_toTopOf="@+id/img_pi"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    <TextView
+                        android:id="@+id/txtBienvenida"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/white"
+                        android:text="Bienvenido"
+                        app:layout_constraintBottom_toTopOf="@+id/img_pi"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -115,9 +115,10 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout12"
                 android:layout_width="333dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayoutlogout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView14">
 
@@ -128,9 +129,9 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="5dp"
                     android:gravity="bottom"
-                    android:visibility="gone"
-                    android:text="Datos de pago"
+                    android:text="Tickets"
                     android:textSize="20dp"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -141,96 +142,82 @@
                     android:id="@+id/textView3"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:layout_marginTop="5dp"
                     android:gravity="bottom"
-                    android:text="Historial"
-                    android:visibility="gone"
+                    android:text="¡Quiero ser repartidor!"
                     android:textSize="20dp"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2">
+                    app:layout_constraintTop_toBottomOf="@+id/textViewlogout">
 
                 </TextView>
-
-                <TextView
+                <!--  android:text="Ganancias / Adeudos" android:textSize="20dp"-->
+                <ImageView
                     android:id="@+id/textView4"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:layout_marginTop="5dp"
                     android:gravity="bottom"
-                    android:text="Formas de pago"
-                    android:textSize="20dp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    android:visibility="visible"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3">
+                    app:layout_constraintTop_toTopOf="@+id/textView2"
+                    app:srcCompat="@drawable/ic_wallet">
 
-                </TextView>
-
-                <TextView
+                </ImageView>
+                <!-- android:text="Notificaciones"
+                    android:textSize="20dp"-->
+                <ImageView
                     android:id="@+id/textView12"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginTop="5dp"
                     android:gravity="bottom"
-                    android:text="Guia"
-                    android:textSize="20dp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:visibility="visible"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4">
+                    app:layout_constraintTop_toBottomOf="@+id/textView4"
+                    app:srcCompat="@drawable/ic_noti">
 
-                </TextView>
-
-                <TextView
+                </ImageView>
+                <!--android:text="Terminos y condiciones"
+                    android:textSize="20dp"-->
+                <!--
+                    android:text="Chat"
+                    android:textSize="20dp"-->
+                <ImageView
                     android:id="@+id/textView13"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:layout_marginTop="5dp"
                     android:gravity="bottom"
-                    android:text="Politica"
-                    android:textSize="20dp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    android:visibility="visible"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView12">
+                    app:layout_constraintTop_toBottomOf="@+id/textView30"
+                    app:srcCompat="@drawable/ic_docs">
 
-                </TextView>
+                </ImageView>
 
-                <TextView
+                <ImageView
                     android:id="@+id/textView30"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:layout_marginTop="5dp"
                     android:gravity="bottom"
-                    android:text="Documentos"
-                    android:textSize="20dp"
-                    android:visibility="gone"
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    android:visibility="visible"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView13">
+                    app:layout_constraintTop_toBottomOf="@+id/textViewlogout"
+                    app:srcCompat="@drawable/ic_chats">
 
-                </TextView>
-
-                <TextView
+                </ImageView>
+                <!--  android:text="Perfil repartidor"
+                    android:textSize="20dp" -->
+                <ImageView
                     android:id="@+id/textViewlogout"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:layout_marginTop="5dp"
                     android:gravity="bottom"
-                    android:text="Cerrar Session"
-                    android:textSize="20dp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    android:visibility="visible"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView30">
+                    app:layout_constraintTop_toBottomOf="@+id/textView12"
+                    app:srcCompat="@drawable/ic_contacts">
 
-                </TextView>
+                </ImageView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

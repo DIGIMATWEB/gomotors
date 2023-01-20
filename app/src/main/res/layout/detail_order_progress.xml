@@ -88,7 +88,7 @@
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="En camio"
+        android:text="En camino"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/viewenprogreso"
         app:layout_constraintStart_toStartOf="@+id/viewenprogreso"

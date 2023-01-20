@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gomotorscompany.gomotors.Dialogs.RepartidorRegistro.keyRegister;
 import com.gomotorscompany.gomotors.R;
 import com.gomotorscompany.gomotors.Login.presenter.LoginPresenter;
 import com.gomotorscompany.gomotors.Login.presenter.LoginPresenterImpl;
@@ -55,7 +56,7 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
     //private DialogTrackingLoader loader;
     private Context context;
     private CardView btnLogin;
-    private TextView txvTitleLogin, txvForgetPassword, registrateaqui;
+    private TextView txvTitleLogin, txvForgetPassword, registrateaqui,repartidor;
     private EditText edtUserOrEmail, edtPassword;
     private TextInputLayout textInputLayoutUser;
     private TextInputLayout textInputLayoutPass;
@@ -102,6 +103,8 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
         registrateaqui=view.findViewById(R.id.Registrateaqui);
         registrateaqui.setVisibility(View.GONE);
         signInButton=view.findViewById(R.id.bottonGoogle);
+        repartidor=view.findViewById(R.id.repartidor);
+        repartidor.setOnClickListener(this);
         //signInButton.setColorScheme(SignInButton.COLOR_DARK);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -270,6 +273,10 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
             case R.id.Registrateaqui:
                 showRegisterViewimpl();
                  break;
+            case R.id.repartidor:
+                keyRegister externalGPSDialog = new keyRegister();
+                externalGPSDialog.show(getActivity().getSupportFragmentManager(), keyRegister.TAG);
+                break;
         }
     }
 
