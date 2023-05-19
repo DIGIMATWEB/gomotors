@@ -116,13 +116,44 @@
                 android:id="@+id/constraintLayout12"
                 android:layout_width="333dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toTopOf="@+id/constraintLayoutlogout"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView14">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelinep1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".33">
 
+            </androidx.constraintlayout.widget.Guideline>
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelinep2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent=".66">
+
+                </androidx.constraintlayout.widget.Guideline>
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineph1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent=".2">
+
+                </androidx.constraintlayout.widget.Guideline>
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineph2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent=".4">
+
+                </androidx.constraintlayout.widget.Guideline>
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="0dp"
@@ -152,28 +183,30 @@
 
                 </TextView>
                 <!--  android:text="Ganancias / Adeudos" android:textSize="20dp"-->
+                <!-- android:text="Notificaciones"
+                    android:textSize="20dp"-->
                 <ImageView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:gravity="bottom"
                     android:visibility="visible"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelinep1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView2"
                     app:srcCompat="@drawable/ic_wallet">
 
                 </ImageView>
-                <!-- android:text="Notificaciones"
-                    android:textSize="20dp"-->
+
                 <ImageView
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:layout_marginTop="5dp"
                     android:gravity="bottom"
                     android:visibility="visible"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelinep2"
+                    app:layout_constraintStart_toStartOf="@+id/guidelinep1"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_noti">
 
                 </ImageView>
@@ -188,8 +221,9 @@
                     android:layout_height="30dp"
                     android:gravity="bottom"
                     android:visibility="visible"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelinep1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView30"
+                    app:layout_constraintTop_toTopOf="@+id/guidelineph1"
                     app:srcCompat="@drawable/ic_docs">
 
                 </ImageView>
@@ -200,8 +234,9 @@
                     android:layout_height="30dp"
                     android:gravity="bottom"
                     android:visibility="visible"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewlogout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guidelinep2"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_chats">
 
                 </ImageView>
@@ -213,8 +248,9 @@
                     android:layout_height="30dp"
                     android:gravity="bottom"
                     android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView12"
+                    app:layout_constraintTop_toTopOf="@+id/guidelineph1"
                     app:srcCompat="@drawable/ic_contacts">
 
                 </ImageView>

@@ -9,7 +9,8 @@ import java.util.List;
 public class datagetOrders implements Serializable{// implements Serializable
 
     // "status_semaforo": 2,
-//      "descripcion_semaforo": "En Cola",
+//      "descripcion_semaforo": "En
+//      Cola",
     @SerializedName("id_order")
     @Expose
     private Integer ordenNum;

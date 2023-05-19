@@ -293,9 +293,9 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
 
         Map<String, Integer> typeAmountMap = new HashMap<>();
         typeAmountMap.put("asignando",asignando);
-        typeAmountMap.put("recolectar",recolectar);
-        typeAmountMap.put("encola",encola);
-        typeAmountMap.put("progreso",progreso);
+        typeAmountMap.put("Recolectar",recolectar);
+        typeAmountMap.put("Recolectado",encola);//encola
+        typeAmountMap.put("En camino",progreso);//progreso
         typeAmountMap.put("terminado",terminado);
         typeAmountMap.put("noentregado",noentregado);
         typeAmountMap.put("Cancelados",cancelado);

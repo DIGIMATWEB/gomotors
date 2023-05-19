@@ -210,9 +210,10 @@
         <entry key="app/src/main/res/layout/key_introduce.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/layout/map_ordenes.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/layout/menu_bar.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/menu_bar2.xml" value="0.3609375" />
         <entry key="app/src/main/res/layout/pedido.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/layout/pedido_expres.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/profile.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/layout/profile.xml" value="0.33" />
       </map>
     </option>
   </component>
