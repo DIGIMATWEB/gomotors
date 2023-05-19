@@ -108,16 +108,16 @@ public class Splahs extends AppCompatActivity implements  splashView{
 
             @Override
             public void run() {
-               /* if(token!=null){
+                if(token!=null){
                     goToMenu();
                 }
                 else
                 {
                     goToLoginContainer();
-                }*/
-                Intent intent = new Intent(getApplicationContext(), expres.class);
+                }
+               /* Intent intent = new Intent(getApplicationContext(), expres.class);
                 startActivity(intent);
-                finish();
+                finish();*/
             }
         },3000);
     }
