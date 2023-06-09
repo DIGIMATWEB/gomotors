@@ -234,9 +234,9 @@ public class FragmentNavigationButtonsMenu extends Fragment implements View.OnCl
         menu1.setColorFilter(R.color.redmenus);
         menu2.setImageResource(R.drawable.ic_pizza);
         menu3.setImageResource(R.drawable.ic_compras);
-        menu4.setImageResource(R.drawable.ic_ordenes);
+        menu4.setImageResource(R.drawable.ic_recibo);
         menu5.setImageResource(R.drawable.ic_zonas);
-        menu6.setImageResource(R.drawable.ic_perfil);
+        menu6.setImageResource(R.drawable.ic_profile);
 
         menu2.setColorFilter(R.color.black);
         menu3.setColorFilter(R.color.black);
@@ -258,9 +258,9 @@ public class FragmentNavigationButtonsMenu extends Fragment implements View.OnCl
         menu2.setImageResource(R.drawable.ic_pizza);
         menu2.setColorFilter(R.color.redmenus);
         menu3.setImageResource(R.drawable.ic_compras);
-        menu4.setImageResource(R.drawable.ic_ordenes);
+        menu4.setImageResource(R.drawable.ic_recibo);
         menu5.setImageResource(R.drawable.ic_zonas);
-        menu6.setImageResource(R.drawable.ic_perfil);
+        menu6.setImageResource(R.drawable.ic_profile);
         menu1.setColorFilter(R.color.black);
         menu3.setColorFilter(R.color.black);
         menu4.setColorFilter(R.color.black);
@@ -281,9 +281,9 @@ public class FragmentNavigationButtonsMenu extends Fragment implements View.OnCl
         menu2.setImageResource(R.drawable.ic_pizza);
         menu3.setImageResource(R.drawable.ic_compras);
         menu3.setColorFilter(R.color.redmenus);
-        menu4.setImageResource(R.drawable.ic_ordenes);
+        menu4.setImageResource(R.drawable.ic_recibo);
         menu5.setImageResource(R.drawable.ic_zonas);
-        menu6.setImageResource(R.drawable.ic_perfil);
+        menu6.setImageResource(R.drawable.ic_profile);
 
         menu1.setColorFilter(R.color.black);
         menu2.setColorFilter(R.color.black);
@@ -305,9 +305,9 @@ public class FragmentNavigationButtonsMenu extends Fragment implements View.OnCl
         menu2.setImageResource(R.drawable.ic_pizza);
         menu3.setImageResource(R.drawable.ic_compras);
         menu4.setImageResource(R.drawable.ic_ordenes);
-        menu4.setColorFilter(R.color.redmenus);
+        menu4.setImageResource(R.drawable.ic_recibo);
         menu5.setImageResource(R.drawable.ic_zonas);
-        menu6.setImageResource(R.drawable.ic_perfil);
+        menu6.setImageResource(R.drawable.ic_profile);
 
         menu1.setColorFilter(R.color.black);
         menu2.setColorFilter(R.color.black);
@@ -328,10 +328,10 @@ public class FragmentNavigationButtonsMenu extends Fragment implements View.OnCl
         menu1.setImageResource(R.drawable.ic_inicio);
         menu2.setImageResource(R.drawable.ic_pizza);
         menu3.setImageResource(R.drawable.ic_compras);
-        menu4.setImageResource(R.drawable.ic_ordenes);
+        menu4.setImageResource(R.drawable.ic_recibo);
         menu5.setImageResource(R.drawable.ic_zonas);
         menu5.setColorFilter(R.color.redmenus);
-        menu6.setImageResource(R.drawable.ic_perfil);
+        menu6.setImageResource(R.drawable.ic_profile);
 
         menu1.setColorFilter(R.color.black);
         menu2.setColorFilter(R.color.black);
@@ -352,9 +352,9 @@ public class FragmentNavigationButtonsMenu extends Fragment implements View.OnCl
         menu1.setImageResource(R.drawable.ic_inicio);
         menu2.setImageResource(R.drawable.ic_pizza);
         menu3.setImageResource(R.drawable.ic_compras);
-        menu4.setImageResource(R.drawable.ic_ordenes);
+        menu4.setImageResource(R.drawable.ic_recibo);
         menu5.setImageResource(R.drawable.ic_zonas);
-        menu6.setImageResource(R.drawable.ic_perfil);
+        menu6.setImageResource(R.drawable.ic_profile);
         menu6.setColorFilter(R.color.redmenus);
 
         menu1.setColorFilter(R.color.black);

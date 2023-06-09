@@ -23,8 +23,10 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.gomotorscompany.gomotors.R;
 import com.gomotorscompany.gomotors.enprogreso.adapter.adapterOrdenes;
@@ -200,7 +202,7 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
             adapter.notifyDataSetChanged();
         }else
         {
-            filldata(dataorders);
+            fillData(dataorders);
         }
 
             fillChart(dataorders);
@@ -252,13 +254,12 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
             }
         }, 10000);
     }
-    private void filldata(List<datagetOrders> dataorders) {
-        adapter=new adapterOrdenes(dataorders,getContext());
-         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-                rv.setLayoutManager(layoutManager);
-                rv.setAdapter(adapter);
-
-                
+    private void fillData(List<datagetOrders> dataOrders) {
+        adapter = new adapterOrdenes(dataOrders, getContext());
+        int spanCount = 2; // Set the desired number of columns in the grid
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(spanCount,StaggeredGridLayoutManager.VERTICAL);
+        rv.setLayoutManager(layoutManager);
+        rv.setAdapter(adapter);
     }
     private void fillrvpendientes(List<dataorderspending> data) {
         adapterpendings=new adapterPendientes(this,data,getContext());

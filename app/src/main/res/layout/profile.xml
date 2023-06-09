@@ -5,49 +5,71 @@
     android:layout_height="match_parent"
 
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View
+
+    <!--<View
+        android:id="@+id/view12"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/colorOrangeYellow"
+        android:background="@color/red"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="1dp">
 
-    </View>
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    </View>-->
 
-        app:cardCornerRadius="18dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout17"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView14"
-                android:layout_width="match_parent"
-                android:layout_height="304dp"
-                android:backgroundTint="@color/colorOrangeYellow"
-                app:cardCornerRadius="18dp">
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+
                     <ImageView
                         android:id="@+id/img_pi"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="120dp"
+                        android:layout_marginTop="112dp"
                         android:src="@drawable/ic_profile_default"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.498"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
 
                     <TextView
                         android:id="@+id/txt_pi_names"
@@ -56,7 +78,9 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="12dp"
                         android:text="@string/profile_username"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="24dp"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/img_pi" />
@@ -68,68 +92,34 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="6dp"
                         android:text="@string/profile_email"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txt_pi_names" />
 
-                    <TextView
-                        android:id="@+id/txtBienvenida"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="5dp"
-                        android:textColor="@color/white"
-                        android:text="Bienvenido"
-                        app:layout_constraintBottom_toTopOf="@+id/img_pi"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayoutlogout"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-                <Button
-                    android:id="@+id/BLayoutlogout"
-                    android:layout_width="match_parent"
-                    android:visibility="visible"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorOrangeYellow"
-                    android:text="Cerrar session"
-                    android:textColor="@color/white">
-
-                </Button>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout12"
                 android:layout_width="333dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayoutlogout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView14">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelinep1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".33">
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelinep1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent=".33">
 
-            </androidx.constraintlayout.widget.Guideline>
+                </androidx.constraintlayout.widget.Guideline>
+
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guidelinep2"
                     android:layout_width="wrap_content"
@@ -138,6 +128,7 @@
                     app:layout_constraintGuide_percent=".66">
 
                 </androidx.constraintlayout.widget.Guideline>
+
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guidelineph1"
                     android:layout_width="wrap_content"
@@ -146,6 +137,7 @@
                     app:layout_constraintGuide_percent=".2">
 
                 </androidx.constraintlayout.widget.Guideline>
+
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guidelineph2"
                     android:layout_width="wrap_content"
@@ -154,6 +146,7 @@
                     app:layout_constraintGuide_percent=".4">
 
                 </androidx.constraintlayout.widget.Guideline>
+
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="0dp"
@@ -184,13 +177,13 @@
                 </TextView>
                 <!--  android:text="Ganancias / Adeudos" android:textSize="20dp"-->
                 <!-- android:text="Notificaciones"
-                    android:textSize="20dp"-->
+                        android:textSize="20dp"-->
                 <ImageView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:gravity="bottom"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toStartOf="@+id/guidelinep1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView2"
@@ -203,7 +196,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:gravity="bottom"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toStartOf="@+id/guidelinep2"
                     app:layout_constraintStart_toStartOf="@+id/guidelinep1"
                     app:layout_constraintTop_toTopOf="parent"
@@ -211,16 +204,16 @@
 
                 </ImageView>
                 <!--android:text="Terminos y condiciones"
-                    android:textSize="20dp"-->
+                        android:textSize="20dp"-->
                 <!--
-                    android:text="Chat"
-                    android:textSize="20dp"-->
+                        android:text="Chat"
+                        android:textSize="20dp"-->
                 <ImageView
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:gravity="bottom"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toStartOf="@+id/guidelinep1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/guidelineph1"
@@ -233,7 +226,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:gravity="bottom"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guidelinep2"
                     app:layout_constraintTop_toTopOf="parent"
@@ -241,13 +234,13 @@
 
                 </ImageView>
                 <!--  android:text="Perfil repartidor"
-                    android:textSize="20dp" -->
+                        android:textSize="20dp" -->
                 <ImageView
                     android:id="@+id/textViewlogout"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:gravity="bottom"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/guidelineph1"
@@ -256,6 +249,44 @@
                 </ImageView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutlogout"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout17"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout17"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout17"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:cardCornerRadius="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/BLayoutlogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/red"
+                    android:text="Cerrar session"
+                    android:textColor="@color/white"
+                    android:visibility="visible">
+
+                </Button>
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

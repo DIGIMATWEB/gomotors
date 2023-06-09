@@ -16,113 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardOrderdetail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/white"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="6dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="112dp"
-                android:background="@drawable/shapealfa"
-                android:padding="6dp">
-
-                <TextView
-                    android:id="@+id/txvOrderId1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Unidad:12345"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/txvDate1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sept 19, 2019, 13:00"
-                    android:textColor="@color/black"
-                    android:textSize="9sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/txvClientName1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="Emauel Osorio"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txvOrderId1" />
-
-                <TextView
-                    android:id="@+id/txvAddress1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:ellipsize="end"
-                    android:maxLines="2"
-                    android:text="Matanzas 771, Lindavista, C.P. 07300"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toTopOf="@id/txvDescription1"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView31"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txvClientName1" />
-
-                <TextView
-                    android:id="@+id/txvDescription1"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="3dp"
-                    android:singleLine="true"
-                    android:text="CANT: 1 CAJA / VOLUMEN: 750m³ / PESO: 1 TON"
-                    android:textColor="@color/black"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView31"
-                    app:layout_constraintStart_toStartOf="@+id/txvAddress1"
-                    app:layout_constraintTop_toBottomOf="@+id/txvAddress1" />
-
-                <TextView
-                    android:id="@+id/txvStatusDescription1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="EN TIEMPO"
-                    android:textColor="@color/black"
-                    android:textSize="11sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txvDescription1" />
-
-                <ImageView
-                    android:id="@+id/imageView31"
-                    android:layout_width="79dp"
-                    android:layout_height="51dp"
-                    android:layout_marginTop="6dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txvDate1"
-                    app:srcCompat="@drawable/ic_status">
-
-                </ImageView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
@@ -393,36 +287,21 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraininclude"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="110dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/cardView3"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <include
                 layout="@layout/detail_order_progress"
                 android:visibility="visible"
                 tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="0dp" />
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/cardviewitem"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:visibility="gone"
-                android:background="@color/white"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                tools:layout_editor_absoluteY="-5dp" />
 
 
-            </androidx.viewpager2.widget.ViewPager2>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -431,16 +310,17 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="16dp"
             app:cardElevation="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/constraininclude"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guidelinebuttonsdetail1">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -450,11 +330,9 @@
                     android:id="@+id/textView28"
                     android:layout_width="100dp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="30dp"
                     android:text="Pedido: 1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintStart_toStartOf="@+id/textView29"
+                    app:layout_constraintTop_toBottomOf="@+id/textView29">
 
                 </TextView>
 
@@ -476,12 +354,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
                     android:text="Cliente"
                     android:textSize="24dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView28">
+                    app:layout_constraintTop_toBottomOf="@+id/textView29">
 
                 </TextView>
 
@@ -489,12 +366,13 @@
                     android:id="@+id/direccionsucursal"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="30dp"
+                    android:layout_marginBottom="200dp"
                     android:text="Direccion de cliente asdasdadadasdasdasdasdasdasdasdasdasdasdasdasdasdasdasasdasdasdasdasdasdasdasdasdasdasdasdassdasdasdasdasd"
-                    android:textSize="24dp"
+                    android:textSize="20dp"
                     app:layout_constraintBottom_toTopOf="@+id/guideline1"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/namerepartidorO">
 
@@ -505,7 +383,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.7" />
+                    app:layout_constraintGuide_percent="0.94" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline2"
@@ -532,10 +410,9 @@
                     android:id="@+id/imagensemaforo"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginEnd="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView29"
+                    app:layout_constraintTop_toBottomOf="@+id/txtdetail"
                     app:srcCompat="@drawable/ic_gogreen">
 
                 </ImageView>
@@ -546,6 +423,7 @@
                     android:layout_height="wrap_content"
                     android:text="En progreso"
                     android:textAlignment="center"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="@+id/imagensemaforo"
                     app:layout_constraintStart_toStartOf="@+id/imagensemaforo"
                     app:layout_constraintTop_toBottomOf="@+id/imagensemaforo">
@@ -555,7 +433,7 @@
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="0dp"
-                    android:layout_height="55dp"
+                    android:layout_height="35dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/shape_button_carrito"
@@ -571,7 +449,7 @@
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="0dp"
-                    android:layout_height="55dp"
+                    android:layout_height="35dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/shape_button_carrito"
@@ -586,13 +464,14 @@
                 <Button
                     android:id="@+id/button"
                     android:layout_width="0dp"
-                    android:layout_height="55dp"
+                    android:layout_height="35dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/shape_button_carrito"
                     android:text="GPS"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toTopOf="@+id/guideline1">
 
@@ -602,11 +481,10 @@
                     android:id="@+id/txtdetail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="Detalle de la orden"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/direccionsucursal"
-                    app:layout_constraintTop_toTopOf="@+id/guideline4">
+                    app:layout_constraintTop_toBottomOf="@+id/direccionsucursal">
 
                 </TextView>
 
@@ -624,12 +502,12 @@
     <Button
         android:id="@+id/buttonenpointOrder"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="35dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/shape_button_carrito"
-        android:text="Cancerlar Orden"
+        android:text="Cancerlar"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guidelinebuttonsdetail2"
         app:layout_constraintEnd_toStartOf="@+id/guidelinebuttonsdetail3"
@@ -641,13 +519,13 @@
     <Button
         android:id="@+id/buttonenpointOrder2"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="35dp"
         android:layout_marginStart="5dp"
 
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/shape_button_carrito"
-        android:text="Cancerlar Orden"
+        android:text="Cancerlar"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guidelinebuttonsdetail2"
         app:layout_constraintEnd_toStartOf="@+id/buttonenpointOrder"
@@ -666,7 +544,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.76" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelinebuttonsdetail3"
         android:layout_width="wrap_content"

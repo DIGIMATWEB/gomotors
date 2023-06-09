@@ -269,7 +269,6 @@ public class ordersInteractorImpl  implements ordersInteractor{
         if(token!=null) {
             setOrdertoRepartidor(token, ordenNum);
         }
-
     }
     private void setOrdertoRepartidor(String token, Integer ordenNum) {
         setAginaciondeOrdenes request=new setAginaciondeOrdenes(token,ordenNum);/**cambiar endpoint*/

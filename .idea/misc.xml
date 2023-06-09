@@ -177,6 +177,7 @@
         <entry key="app/src/main/res/drawable/round_switch.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/round_track.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/shape.xml" value="0.193" />
+        <entry key="app/src/main/res/drawable/shape_button_carrito.xml" value="0.193" />
         <entry key="app/src/main/res/drawable/shape_circle.xml" value="0.347" />
         <entry key="app/src/main/res/drawable/shape_circle_audio.xml" value="0.156" />
         <entry key="app/src/main/res/drawable/shape_circle_gray.xml" value="0.347" />
@@ -190,18 +191,18 @@
         <entry key="app/src/main/res/drawable/shape_redbutton.xml" value="0.157" />
         <entry key="app/src/main/res/drawable/shape_yelow.xml" value="0.157" />
         <entry key="app/src/main/res/layout/activity_container.xml" value="0.18489583333333334" />
-        <entry key="app/src/main/res/layout/activity_login_container.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/activity_login_container.xml" value="0.28621659634317864" />
         <entry key="app/src/main/res/layout/activity_splashcreen.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/activity_webview.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/layout/activityagregar.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/asignando_pedido.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/bottom_sheet_map.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/chat_layout.xml" value="0.18385416666666668" />
-        <entry key="app/src/main/res/layout/detail_order.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/detail_order.xml" value="0.25" />
         <entry key="app/src/main/res/layout/detail_order_progress.xml" value="0.33" />
         <entry key="app/src/main/res/layout/en_ordenes.xml" value="0.3453125" />
-        <entry key="app/src/main/res/layout/en_progreso.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/item_order.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/en_progreso.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/item_order.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_orderspending.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/item_pager_questions.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/item_questions_type.xml" value="0.3182291666666667" />

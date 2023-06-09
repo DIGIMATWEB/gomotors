@@ -80,7 +80,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
     private void initView() {
         Bundle bndl;
         bndl = getIntent().getExtras();
-        pager = (ViewPager2) findViewById(R.id.cardviewitem);
+       // pager = (ViewPager2) findViewById(R.id.cardviewitem);
         viewrecolectar=(View)findViewById(R.id.viewrecolectar);
         viewEncola=(View)findViewById(R.id.viewEncola);
         viewenprogreso=(View)findViewById(R.id.viewenprogreso);

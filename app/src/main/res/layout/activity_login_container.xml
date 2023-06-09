@@ -33,16 +33,45 @@
     </Button>
 
     <!-- Main Title -->
+    <ImageView
+        android:layout_width="431dp"
+        android:layout_height="140dp"
+        android:background="@drawable/ciudad"
+        android:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView15"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="130dp"
+        android:background="@color/white"
+
+        app:cardCornerRadius="18dp"
+        app:cardElevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="00dp"
+        android:layout_height="15dp"
+        android:background="@color/white"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/img_login_icon"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-
-        android:layout_marginTop="44dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="30dp"
+        android:elevation="10dp"
         android:src="@mipmap/ic_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,8 +107,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="25dp"
+        android:elevation="10dp"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
@@ -95,6 +125,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
+
                 app:hintAnimationEnabled="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +139,7 @@
                     android:layout_height="40dp"
                     android:layout_marginStart="3dp"
                     android:background="@null"
-                    android:hint="Nombre de usuario/ telefono"
+                    android:hint=" User"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -126,8 +157,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="25dp"
+        android:elevation="10dp"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,7 +187,7 @@
                     android:layout_height="40dp"
                     android:layout_marginStart="3dp"
                     android:background="@null"
-                    android:hint="Contraseña"
+                    android:hint=" Password"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -171,6 +203,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
+        android:elevation="10dp"
+        android:visibility="gone"
         android:text="¿Olvidaste tu contraseña?"
         style="@style/LoginText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -183,10 +217,11 @@
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="25dp"
-        app:cardBackgroundColor="@color/colorOrangeYellow"
-        app:cardCornerRadius="2dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="@color/red"
+        app:cardCornerRadius="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txvForgetPassword">
@@ -222,9 +257,11 @@
     </com.google.android.gms.common.SignInButton>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout19"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_marginTop="20dp"
+        android:elevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottonGoogle"
@@ -233,23 +270,27 @@
         <TextView
             android:id="@+id/Registrate"
             style="@style/LoginText"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿Aun  no tienes cuenta?" />
+            android:text="¿Aun  no tienes cuenta?"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/repartidor"
             style="@style/LoginText"
-            android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quiero ser repartidor" />
+
+            android:text="Quiero ser repartidor"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/Registrateaqui"
             style="@style/LoginText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Registrate aqui"
+            android:visibility="gone"
             android:textColor="@color/colorOrangeYellow"
             app:layout_constraintStart_toEndOf="@+id/Registrate" />
 

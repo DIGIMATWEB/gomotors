@@ -41,6 +41,23 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull adapterOrdenes.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        boolean isPair = position % 2==0;
+        if(!isPair)
+        {
+            ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) holder.cardOrder.getLayoutParams();
+            int marginTop;
+            // Set the top margin (in pixels) programmatically
+            if(position!=1) {
+                marginTop= 16; // Set your desired margin value here
+            }else{
+                marginTop = 80;
+            }
+            layoutParams.topMargin = marginTop;
+            layoutParams.bottomMargin = 16;
+            layoutParams.height=500;
+            // Apply the modified layout parameters to the CardView
+            holder.cardOrder.setLayoutParams(layoutParams);
+        }
             holder.orden.setText("Num. orden:"+String.valueOf( data.get(position).getOrdenNum()));
             holder.nombreRepartidor.setText(""+data.get(position).getSuc());//
             holder.txvAddress11.setText(""+data.get(position).getRepartidor());
@@ -94,7 +111,7 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
                     //dataorder.putString("direccionBundle5", ""+data.get(position).getPaquete().size());
                     //dataorder.putString("direccionBundle6", ""+data.get(position).getProductosU().size());
                     //dataorder.putString("direccionBundle7", ""+data.get(position).getComplemeto().size());
-                    
+
                     dataorder.putDouble("direccionBundle8", data.get(position).getLatitud());
                     dataorder.putDouble("direccionBundle9", data.get(position).getLonguitud());
                     dataorder.putString("direccionBundle10", ""+data.get(position).getDireccion());
@@ -132,6 +149,7 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
         TextView orden,nombreRepartidor,direccion,txvAddress11,descripcionPaquete,fecha,statusorden;
         CardView cardOrder;
         ImageView imageView31;
+       // View    extraspace;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             orden=itemView.findViewById(R.id.txvOrderId1);
@@ -143,6 +161,7 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
             statusorden=itemView.findViewById(R.id.txvStatusDescription1);
             cardOrder= itemView.findViewById(R.id. cardOrder);
             imageView31= itemView.findViewById(R.id. imageView31);
+            //extraspace=itemView.findViewById(R.id.extraspace);
         }
     }
 }

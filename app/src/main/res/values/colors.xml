@@ -28,5 +28,6 @@
     <color name="colorgreenstatus">#00C48C</color>
     <color name="green">#4DED46</color>
     <color name="black_overlay">#66000000</color>
-    <color name="red">#CC0000</color>
+    <color name="red">#f44336</color>
+    <color name="redDark">#ba000d</color>
 </resources>

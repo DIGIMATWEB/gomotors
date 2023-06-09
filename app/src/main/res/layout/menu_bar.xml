@@ -167,7 +167,7 @@
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
             android:gravity="center"
-            android:text="Ordenes"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="9sp"
             android:visibility="visible"
@@ -185,7 +185,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_ordenes">
+            app:srcCompat="@drawable/ic_recibo">
 
         </ImageView>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -251,7 +251,7 @@
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
             android:gravity="center"
-            android:text="Perfil"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="9sp"
             android:visibility="visible"
@@ -269,7 +269,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_perfil">
+            app:srcCompat="@drawable/ic_profile">
 
         </ImageView>
     </androidx.constraintlayout.widget.ConstraintLayout>
