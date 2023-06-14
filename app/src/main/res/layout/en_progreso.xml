@@ -34,13 +34,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pedidosencola"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="15dp"
-        android:background="@drawable/shape_circle_red"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/ic_bell"
+        android:backgroundTint="#E91E63"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toStartOf="@+id/chart"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView">
 
         <TextView
@@ -49,8 +50,9 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/roboto_black"
             android:gravity="center"
-            android:text="0"
-            android:textColor="@color/white"
+            android:text="10"
+            android:textColor="@color/black"
+            android:textSize="11dp"
             android:textStyle="bold">
 
         </TextView>
