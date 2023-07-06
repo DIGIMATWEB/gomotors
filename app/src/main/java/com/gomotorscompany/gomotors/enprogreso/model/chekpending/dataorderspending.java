@@ -24,13 +24,33 @@ public class dataorderspending {
     @Expose
     private List<ListaRepa> listaRepa = null;
 
-    public dataorderspending(Integer orden, String suc, Float latSuc, Float longSuc, List<ListaRepa> listaRepa) {
+    @SerializedName("fecha")
+    private String date;
+    @SerializedName("negocio")
+    private String negocio;
+    @SerializedName("cliente")
+    private String cliente;
+    @SerializedName("monto_articulos")
+    private String apaga;
+    @SerializedName("envio")
+    private String envio;
+    @SerializedName("direccion")
+    private String direccion;
+
+
+    public dataorderspending(Integer orden, String suc, Float latSuc, Float longSuc, List<ListaRepa> listaRepa,String date, String negocio, String cliente, String apaga,String envio,String direccion) {
         super();
         this.orden = orden;
         this.suc = suc;
         this.latSuc = latSuc;
         this.longSuc = longSuc;
         this.listaRepa = listaRepa;
+        this.date= date;
+        this.negocio=negocio;
+        this.cliente=cliente;
+        this.apaga=apaga;
+        this.envio=envio;
+        this.direccion=direccion;
     }
 
     public Integer getOrden() {
@@ -71,5 +91,53 @@ public class dataorderspending {
 
     public void setListaRepa(List<ListaRepa> listaRepa) {
         this.listaRepa = listaRepa;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getNegocio() {
+        return negocio;
+    }
+
+    public void setNegocio(String negocio) {
+        this.negocio = negocio;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public String getApaga() {
+        return apaga;
+    }
+
+    public void setApaga(String apaga) {
+        this.apaga = apaga;
+    }
+
+    public String getEnvio() {
+        return envio;
+    }
+
+    public void setEnvio(String envio) {
+        this.envio = envio;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }

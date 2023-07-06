@@ -290,7 +290,7 @@ public class pedido extends Fragment implements View.OnClickListener, OnMapReady
             presenter.requestOrder();
         }
         else{
-            Toast.makeText(context, "No se asigno Repartidor", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(context, "No se asigno Repartidor", Toast.LENGTH_SHORT).show();
         }
     }
 

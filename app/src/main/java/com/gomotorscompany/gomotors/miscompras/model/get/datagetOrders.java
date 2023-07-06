@@ -68,10 +68,10 @@ public class datagetOrders implements Serializable{// implements Serializable
     @SerializedName("telefono")
     @Expose
     private String telefono;
-
+    private String TEA= null;
     public datagetOrders(Integer semaforo,String status,String token, Integer ordenNum, String fecha, String direccion, String suc, String namesuc,
                          Double latsuc,Double longsuc, Double latitud, Double longuitud,Integer idRepartidor,String repartidor, List<Paquete> paquete,
-                         List<ProductosU> productosU, List<Complemeto> complemeto,String telefono) {
+                         List<ProductosU> productosU, List<Complemeto> complemeto,String telefono,String TEA) {
         super();
         this.semaforo=semaforo;
         this.status=status;
@@ -91,6 +91,7 @@ public class datagetOrders implements Serializable{// implements Serializable
         this.productosU = productosU;
         this.complemeto = complemeto;
         this.telefono=telefono;
+        this.TEA=TEA;
     }
 
     public String getTelefono() {
@@ -234,6 +235,12 @@ public class datagetOrders implements Serializable{// implements Serializable
     public void setLongsuc(Double longsuc) {
         this.longsuc = longsuc;
     }
+    public String getTEA() {
+        return TEA;
+    }
 
+    public void setTEA(String TEA) {
+        this.TEA = TEA;
+    }
 
 }

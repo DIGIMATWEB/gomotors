@@ -41,6 +41,11 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull adapterOrdenes.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        if(data.get(position).getTEA()==null){
+            holder.TEA.setText("");
+        }else {
+            holder.TEA.setText("" + data.get(position).getTEA());
+        }
         boolean isPair = position % 2==0;
         if(!isPair)
         {
@@ -146,7 +151,7 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
         return position;
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView orden,nombreRepartidor,direccion,txvAddress11,descripcionPaquete,fecha,statusorden;
+        TextView orden,nombreRepartidor,direccion,txvAddress11,descripcionPaquete,fecha,statusorden,TEA;
         CardView cardOrder;
         ImageView imageView31;
        // View    extraspace;
@@ -161,6 +166,7 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
             statusorden=itemView.findViewById(R.id.txvStatusDescription1);
             cardOrder= itemView.findViewById(R.id. cardOrder);
             imageView31= itemView.findViewById(R.id. imageView31);
+            TEA=itemView.findViewById(R.id.TEA);
             //extraspace=itemView.findViewById(R.id.extraspace);
         }
     }

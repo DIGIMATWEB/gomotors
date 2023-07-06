@@ -51,7 +51,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/roboto_black"
             android:gravity="center"
-            android:text="10"
+            android:text="0"
             android:textColor="@color/black"
             android:textSize="11dp"
             android:textStyle="bold">

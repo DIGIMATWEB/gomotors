@@ -360,7 +360,7 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
                         dialogpendientes.setVisibility(View.VISIBLE);
                     }else
                     {
-                        Toast.makeText(getContext(), "No hay ordenes pendientes", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getContext(), "No hay ordenes pendientes", Toast.LENGTH_SHORT).show();
                     }
                 }
 

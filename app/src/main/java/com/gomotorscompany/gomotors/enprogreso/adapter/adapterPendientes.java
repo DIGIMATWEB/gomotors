@@ -1,5 +1,6 @@
 package com.gomotorscompany.gomotors.enprogreso.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,9 +37,14 @@ public class adapterPendientes extends RecyclerView.Adapter<adapterPendientes.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull adapterPendientes.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull adapterPendientes.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        holder.name.setText(data.get(position).getSuc());
+        holder.name.setText("SUC: "+data.get(position).getSuc());
+        holder.company.setText("");//+data.get(position).getNegocio());
+        holder.order.setText("ORD: # "+data.get(position).getOrden());
+        holder.cte.setText("CTE: "+data.get(position).getDireccion());
+        holder.apago.setText(""+data.get(position).getApaga());
+        holder.date.setText(""+data.get(position).getEnvio());
         holder.aceptar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -57,12 +63,17 @@ public class adapterPendientes extends RecyclerView.Adapter<adapterPendientes.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView name;
+        TextView name,cte,company,order,apago,date;
         Switch aceptar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.sucursalname);
+            company=itemView.findViewById(R.id.negocio);
+            order=itemView.findViewById(R.id.orden);
+            cte=itemView.findViewById(R.id.cliente);
+            apago=itemView.findViewById(R.id.apago);
+            date=itemView.findViewById(R.id.date);
+            name=itemView.findViewById(R.id.sucursal);
             aceptar=itemView.findViewById(R.id.switchAceptar);
         }
     }
