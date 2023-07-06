@@ -449,9 +449,18 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
                 }
                 break;
             case R.id.button:
+                if(semaforodelaorden >= 3){
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/dir/?api=1&" + "origin=" + latitude + "," + longitude + "&" + "destination=" + latclient + "," + longclient + "&travelmode=driving"));
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/dir/?api=1&" + "origin=" + latitude + "," + longitude + "&" + "destination=" + latsuc + "," + longsuc + "&travelmode=driving"));
+                    startActivity(intent);
+                }
+                /*
                 wazemaps externalGPSDialog = new wazemaps();
-                externalGPSDialog.setLocationVehicle(latclient,longclient,latsuc, longsuc,semaforodelaorden);/** esta es la ibicacion de la sucursal*/
+                externalGPSDialog.setLocationVehicle(latclient,longclient,latsuc, longsuc,semaforodelaorden);
                 externalGPSDialog.show(this.getSupportFragmentManager(), wazemaps.TAG);
+                */
                 break;
             case R.id.button2:
                 Intent intentDial = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + telefono));
