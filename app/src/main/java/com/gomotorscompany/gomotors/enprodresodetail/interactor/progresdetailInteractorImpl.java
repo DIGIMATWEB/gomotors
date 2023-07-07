@@ -36,20 +36,23 @@ public class progresdetailInteractorImpl implements progresdetailInteractor{
 
     @Override
     public void changeStatus(String clientid, int idorder, int status) {
-        setStatustoOrder request= new setStatustoOrder(clientid,idorder,status);
-        Call<responseChangeStatus> call=service.setNewStatustoOrder(request);
-        call.enqueue(new Callback<responseChangeStatus>() {
-            @Override
-            public void onResponse(Call<responseChangeStatus> call, Response<responseChangeStatus> response) {
-                validateresponsechangestatus(response,context,status);
-            }
+        SharedPreferences preferences = context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+        String token     = preferences.getString(GeneralConstantsV2.TOKEN_PREFERENCES, null);
+        if(token!=null) {
+            setStatustoOrder request = new setStatustoOrder(token, idorder, status);
+            Call<responseChangeStatus> call = service.setNewStatustoOrder(request);
+            call.enqueue(new Callback<responseChangeStatus>() {
+                @Override
+                public void onResponse(Call<responseChangeStatus> call, Response<responseChangeStatus> response) {
+                    validateresponsechangestatus(response, context, status);
+                }
 
-            @Override
-            public void onFailure(Call<responseChangeStatus> call, Throwable t) {
-                Toast.makeText(context,""+t.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
-
+                @Override
+                public void onFailure(Call<responseChangeStatus> call, Throwable t) {
+                    Toast.makeText(context, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     private void validateresponsechangestatus(Response<responseChangeStatus> response, Context context, int status) {
