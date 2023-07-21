@@ -20,6 +20,7 @@ import com.gomotorscompany.gomotors.miscompras.model.get.datagetOrders;
 import com.bumptech.glide.Glide;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHolder>{
@@ -150,6 +151,14 @@ public class adapterOrdenes extends RecyclerView.Adapter<adapterOrdenes.ViewHold
     public int getItemViewType(int position) {
         return position;
     }
+
+    public void mainNotify(List<datagetOrders> dataorders) {
+        this.data=new ArrayList<>();
+        data.clear();
+        data.addAll(dataorders);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView orden,nombreRepartidor,direccion,txvAddress11,descripcionPaquete,fecha,statusorden,TEA;
         CardView cardOrder;

@@ -1,5 +1,7 @@
 package com.gomotorscompany.gomotors.enprogreso.util;
 
+import com.gomotorscompany.gomotors.Login.model.isActiveResponse;
+import com.gomotorscompany.gomotors.Login.model.isactiveRequest;
 import com.gomotorscompany.gomotors.enprodresodetail.model.repartidor.requetsliberar;
 import com.gomotorscompany.gomotors.enprodresodetail.model.repartidor.responseLiberar;
 import com.gomotorscompany.gomotors.enprogreso.model.chekpending.requestpending;
@@ -29,4 +31,6 @@ public interface servicegetOrders {
     Call<responsependientes> checkpendings(@Body requestpending request);
     @POST(RetrofitEndPointsV2.ASIGN_REPARTIDOR)
     Call<responseAsignaciondelaOrden> setReapartidorToOrder(@Body setAginaciondeOrdenes request);
+    @POST(RetrofitEndPointsV2.ISACTIVE)
+    Call<isActiveResponse> isactives(@Body isactiveRequest request);
 }

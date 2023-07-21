@@ -8,6 +8,8 @@ import android.widget.Toast;
 import com.gomotorscompany.gomotors.Login.model.LoginRequestV2;
 import com.gomotorscompany.gomotors.Login.model.LoginResponseV2;
 import com.gomotorscompany.gomotors.Login.model.UserDataV2;
+import com.gomotorscompany.gomotors.Login.model.isActiveResponse;
+import com.gomotorscompany.gomotors.Login.model.isactiveRequest;
 import com.gomotorscompany.gomotors.Login.presenter.LoginPresenter;
 import com.gomotorscompany.gomotors.Login.utils.LoginServicesV2;
 import com.gomotorscompany.gomotors.retrofit.GeneralConstantsV2;
@@ -43,6 +45,31 @@ public class LoginInteractorImpl implements LoginInteractor {
         else{
             Toast.makeText(context, "Informacion incorrecta", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void checkStatus(String token) {
+      isactiveRequest request= new isactiveRequest(token)  ;
+      Call<isActiveResponse> call=service.isactives(request);
+      call.enqueue(new Callback<isActiveResponse>() {
+          @Override
+          public void onResponse(Call<isActiveResponse> call, Response<isActiveResponse> response) {
+              if(response.code()==200){
+                  if(response.body().getActivo()==1){
+                      Toast.makeText(context, "Tu usuario no se encuentra activo", Toast.LENGTH_LONG).show();
+                  }else{
+                      presenter.succesLogin();
+                  }
+              }else{
+                  Toast.makeText(context, "response: "+response.message(), Toast.LENGTH_LONG).show();
+              }
+          }
+
+          @Override
+          public void onFailure(Call<isActiveResponse> call, Throwable t) {
+              Toast.makeText(context, "response: "+t.getMessage(), Toast.LENGTH_LONG).show();
+          }
+      });
     }
 
     private void requestokLogin(String user, String pass) {
@@ -91,6 +118,7 @@ public class LoginInteractorImpl implements LoginInteractor {
                  String nombre=data[0].getEmployeeName();
                  String telefono=data[0].getTelefono();
                  String token=data[0].getToken();
+                 String cve=data[0].getCve();
                  int permisionID= data[0].getPermissionsId();
                 Log.e("credenciales","value   "+permisionID);
                 SharedPreferences preferencias=context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES,Context.MODE_PRIVATE);
@@ -101,7 +129,7 @@ public class LoginInteractorImpl implements LoginInteractor {
                 editor.putString(GeneralConstantsV2.EMAIL_PREFERENCES, email);
                 editor.putString(GeneralConstantsV2.TOKEN_PREFERENCES, token);
                 editor.putString(GeneralConstantsV2.LEVEL_PERMISIONS, String.valueOf(permisionID));
-
+                editor.putString(GeneralConstantsV2.CVE, cve);
                 editor.commit();
                 presenter.succes();
                 presenter.hideDialog();

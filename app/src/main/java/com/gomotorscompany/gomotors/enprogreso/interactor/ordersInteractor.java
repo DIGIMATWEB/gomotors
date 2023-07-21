@@ -10,4 +10,6 @@ public interface ordersInteractor {
     void checkencola();
 
     void asignOrderRepartidor(int ordenNum);
+
+    void checkStatus();
 }

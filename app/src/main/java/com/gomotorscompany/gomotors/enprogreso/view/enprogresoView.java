@@ -15,4 +15,6 @@ public interface enprogresoView {
     void setOrdenesPendientes(List<dataorderspending> data);
 
     void succesAsignarRepartidor(int code);
+
+    void endSession();
 }

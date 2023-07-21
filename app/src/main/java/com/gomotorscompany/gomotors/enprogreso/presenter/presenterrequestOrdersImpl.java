@@ -68,6 +68,22 @@ public class presenterrequestOrdersImpl implements presenterrequestOrders {
     }
 
     @Override
+    public void checkStatus() {
+        if(view!=null)
+        {
+            interactor.checkStatus();
+        }
+    }
+
+    @Override
+    public void endSession() {
+        if(view!=null)
+        {
+            view.endSession();
+        }
+    }
+
+    @Override
     public void setPendingsToview(List<dataorderspending> data) {
         if(view!=null)
         {

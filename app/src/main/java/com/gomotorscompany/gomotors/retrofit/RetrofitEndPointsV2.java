@@ -39,5 +39,5 @@ public class RetrofitEndPointsV2 {
     public static final String GET_SPLASHDATAV2= "api/[Delivery_30_Get_Logo_SplashController]/Find";          /*ok**/
 
 
-
+    public static final String ISACTIVE = "api/[Delivery_65_Get_Repartidor_Status]/Find" ;
 }

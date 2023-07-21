@@ -3,6 +3,7 @@ package com.gomotorscompany.gomotors.enprogreso.view;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -15,6 +16,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +31,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.gomotorscompany.gomotors.Login.view.LoginContainer;
 import com.gomotorscompany.gomotors.R;
 import com.gomotorscompany.gomotors.enprogreso.adapter.adapterOrdenes;
 import com.gomotorscompany.gomotors.enprogreso.adapter.adapterPendientes;
@@ -66,12 +70,14 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
     private Handler handler = new Handler();
     private Runnable runnable;
     private ImageView closependingorders;
+    private Bundle mainbundle;
+    private Button refresh;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.en_progreso, container, false);
 
-
+        mainbundle = savedInstanceState;
 
         // LocationListener locationListenerGPS = null;
 
@@ -131,10 +137,13 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
         textpendings=view.findViewById(R.id.numberpedidos);
         dialogpendientes =view.findViewById(R.id.dialogpendientes);
         dialogpendientes.setOnClickListener(this);
+        refresh=view.findViewById(R.id.refresh);
+        refresh.setOnClickListener(this);
         progressDialog = new ProgressDialog(getActivity());
         presenter=new presenterrequestOrdersImpl(this,getContext());
         presenter.requestOrders();
         presenter.checkEncola();
+        loopHandler();
 
     }
     @Override
@@ -180,34 +189,54 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
         }
     }
 
+    @Override
+    public void endSession() {
+        SharedPreferences preferences = getContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+        //preferences.edit().clear().commit();
+
+        Intent intent = new Intent(getActivity(), LoginContainer.class);
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            extras.clear();
+            mainbundle.clear();
+        }
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
 
     @Override
     public void setOreders(List<datagetOrders> data) {
         this.dataorders=data;
-        loopHandler();
-        if(dataorders!=null)
-        {   if(!dataorders.isEmpty())
-            {
-                if(dataorders.get(0).getSemaforo()>5)
-                {
-                    presenter.liberarRepartidor();
-                }
-
-            }else
-        {
-
-        }
-        if(adapter!=null)
-        {
-            adapter.notifyDataSetChanged();
-        }else
-        {
+//
+//        if(dataorders!=null)
+//        {   if(!dataorders.isEmpty())
+//            {
+//                if(dataorders.get(0).getSemaforo()>5)
+//                {
+//                    presenter.liberarRepartidor();
+//                }
+//
+//            }else
+//        {
+//
+//        }
+//        if(adapter!=null)
+//        {
+//            adapter.notifyDataSetChanged();
+//        }else
+//        {
             fillData(dataorders);
-        }
+//        }
+            if(adapter!=null){
+                refresh.performClick();
+            }
+           // fillChart(dataorders);
 
-            fillChart(dataorders);
-
-        }
+       // }
     }
 
     @Override
@@ -247,10 +276,18 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
     private void loopHandler() {
         handler.postDelayed(runnable= new Runnable() {
             public void run() {
-
+                Log.e("handlerinprogres","runable");
                 presenter.requestOrders();
                 presenter.checkEncola();
-
+                presenter.checkStatus();
+                if(adapter!=null){
+                    adapter.notifyDataSetChanged();
+                }
+                if(adapterpendings!=null){
+                    adapterpendings.notifyDataSetChanged();
+                }
+               // refresh.performClick();
+                handler.postDelayed(this,10000);
             }
         }, 10000);
     }
@@ -340,6 +377,11 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.refresh:
+                if(adapter!=null) {
+                    adapter.mainNotify(dataorders);
+                }
+                break;
             case R.id.chart:
                 if(constrainpiechr.getVisibility()==View.GONE)
                 {

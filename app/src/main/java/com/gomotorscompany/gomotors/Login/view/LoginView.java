@@ -8,4 +8,6 @@ public interface LoginView {
     void showMessage(String message);
 
     void succesLogin();
+
+    void succesLoginf();
 }

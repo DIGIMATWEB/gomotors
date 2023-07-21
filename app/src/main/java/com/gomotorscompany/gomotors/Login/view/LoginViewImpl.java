@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import com.gomotorscompany.gomotors.Login.presenter.LoginPresenterImpl;
 import com.gomotorscompany.gomotors.forgotpasword.view.restore_password;
 import com.gomotorscompany.gomotors.mainContent.view.mainContentViewImpl;
 import com.gomotorscompany.gomotors.register.view.registerViewImpl;
+import com.gomotorscompany.gomotors.retrofit.GeneralConstantsV2;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.Credentials;
 import com.google.android.gms.auth.api.credentials.CredentialsApi;
@@ -299,10 +301,18 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
 
     @Override
     public void succesLogin() {
-                Intent intent = new Intent(getActivity(), mainContentViewImpl.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP);//
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+        SharedPreferences preferences = context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+        String token     = preferences.getString(GeneralConstantsV2.TOKEN_PREFERENCES, null);
+                 presenter.checkStatus(token);
+
+    }
+
+    @Override
+    public void succesLoginf() {
+        Intent intent = new Intent(getActivity(), mainContentViewImpl.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP);//
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
 

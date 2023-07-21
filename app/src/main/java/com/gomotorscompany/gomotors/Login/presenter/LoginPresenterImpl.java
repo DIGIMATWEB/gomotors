@@ -27,6 +27,21 @@ public class LoginPresenterImpl implements  LoginPresenter{
     public void loginRequest(String telephone,String pass ) {
         interactor.requestLogin(telephone ,pass );
     }
+    @Override
+    public void checkStatus(String token) {
+        if(view!=null)
+        {
+            interactor.checkStatus(token);
+        }
+    }
+
+    @Override
+    public void succesLogin() {
+        if(view!=null)
+        {
+            view.succesLoginf();
+        }
+    }
 
     @Override
     public void succes() {
@@ -51,4 +66,6 @@ public class LoginPresenterImpl implements  LoginPresenter{
             view.showLoader();
         }
     }
+
+
 }

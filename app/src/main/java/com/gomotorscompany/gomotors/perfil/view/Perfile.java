@@ -31,7 +31,7 @@ import com.google.android.gms.tasks.Task;
 public class Perfile extends Fragment implements View.OnClickListener {
     public static final String TAG = Perfile.class.getSimpleName();
     private String user, telephone, email;
-    private TextView proifilename, txt_pi_email;
+    private TextView proifilename, txt_pi_email,cve;
     private GoogleSignInClient mSignInClient;
     private TextView textView2, textView3;
     private ImageView textView4, textView12, textView13, textView30, logout;
@@ -50,6 +50,7 @@ public class Perfile extends Fragment implements View.OnClickListener {
     private void initView(View view) {
         SharedPreferences preferences = getContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
         String gerarquia = preferences.getString(GeneralConstantsV2.LEVEL_PERMISIONS, null);
+        String mcve =preferences.getString(GeneralConstantsV2.CVE,null);
         Log.e("gerarquiaP", "" + gerarquia);
         logout = view.findViewById(R.id.textViewlogout);//perfil reparitidor
         txt_pi_email = view.findViewById(R.id.txt_pi_email);
@@ -65,6 +66,8 @@ public class Perfile extends Fragment implements View.OnClickListener {
         textView13.setOnClickListener(this);
         textView30 = view.findViewById(R.id.textView30); //chat
         textView30.setOnClickListener(this);
+        cve= view.findViewById(R.id.cve);
+        cve.setText(mcve);
         logout.setOnClickListener(this);
         BLayoutlogout = view.findViewById(R.id.BLayoutlogout);
         BLayoutlogout.setOnClickListener(this);

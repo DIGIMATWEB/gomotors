@@ -32,6 +32,21 @@
 
     </ImageView>
 
+    <Button
+        android:id="@+id/refresh"
+        style="@style/ButtonWithAnimation"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="20dp"
+        android:elevation="25dp"
+        android:background="@drawable/button_selector"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView4">
+
+    </Button>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pedidosencola"
         android:layout_width="45dp"

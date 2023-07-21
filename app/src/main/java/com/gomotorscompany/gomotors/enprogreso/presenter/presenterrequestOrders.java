@@ -24,4 +24,8 @@ public interface presenterrequestOrders {
     void setOrdertorapartidor(int idorder);
 
     void succesAsignRepartidor(int code);
+
+    void checkStatus();
+
+    void endSession();
 }

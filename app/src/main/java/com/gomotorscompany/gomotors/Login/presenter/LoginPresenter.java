@@ -11,4 +11,8 @@ public interface LoginPresenter {
     void hideDialog();
 
     void showDialog();
+
+    void checkStatus(String token);
+
+    void succesLogin();
 }

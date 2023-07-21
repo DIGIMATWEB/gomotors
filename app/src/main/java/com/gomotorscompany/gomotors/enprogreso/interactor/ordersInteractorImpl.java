@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.gomotorscompany.gomotors.Login.model.isActiveResponse;
+import com.gomotorscompany.gomotors.Login.model.isactiveRequest;
 import com.gomotorscompany.gomotors.enprodresodetail.model.repartidor.requetsliberar;
 import com.gomotorscompany.gomotors.enprodresodetail.model.repartidor.responseLiberar;
 import com.gomotorscompany.gomotors.enprogreso.model.chekpending.dataorderspending;
@@ -134,7 +136,7 @@ public class ordersInteractorImpl  implements ordersInteractor{
                 }
             }
         }
-
+/**alejandro mascorro27 1234567*/
     private void getOrdersdata(Response<responseGetOrder> response, Context context) {
         responseGetOrder resp=response.body();
         if(resp!=null) {
@@ -270,6 +272,37 @@ public class ordersInteractorImpl  implements ordersInteractor{
             setOrdertoRepartidor(token, ordenNum);
         }
     }
+
+    @Override
+    public void checkStatus() {
+        SharedPreferences preferences = context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+        String token     = preferences.getString(GeneralConstantsV2.TOKEN_PREFERENCES, null);
+        if(token!=null) {
+            isactiveRequest request= new isactiveRequest(token)  ;
+            Call<isActiveResponse> call=service.isactives(request);
+            call.enqueue(new Callback<isActiveResponse>() {
+                @Override
+                public void onResponse(Call<isActiveResponse> call, Response<isActiveResponse> response) {
+                    if(response.code()==200){
+                        if(response.body().getActivo()==1){
+                            Toast.makeText(context, "Tu usuario no se encuentra activo", Toast.LENGTH_LONG).show();
+                            presenter.endSession();
+                        }else{
+                           // presenter.succesLogin();
+                        }
+                    }else{
+                        Toast.makeText(context, "response: "+response.message(), Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<isActiveResponse> call, Throwable t) {
+                    Toast.makeText(context, "response: "+t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+    }
+
     private void setOrdertoRepartidor(String token, Integer ordenNum) {
         setAginaciondeOrdenes request=new setAginaciondeOrdenes(token,ordenNum);/**cambiar endpoint*/
         Call<responseAsignaciondelaOrden> call=service.setReapartidorToOrder(request);
