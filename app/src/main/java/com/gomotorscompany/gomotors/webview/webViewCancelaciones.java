@@ -32,7 +32,7 @@ public class webViewCancelaciones extends AppCompatActivity {
         String token = preferences.getString(GeneralConstantsV2.TOKEN_PREFERENCES, null);
         // loading http://www.google.com url in the WebView.
         //http://200.92.216.34:83/MODULOS/funcion?cve_objeto=M_W01_035&&token=  http://200.92.216.34:83/Administrador/AdministradorLogin?usuario=qptest&&password=0A-61-5F-AB-0A-20-75-85-B8-91-8E-95-A7-A2-25-6D
-        myWebView.loadUrl("http://quesipizzasmx-001-site16.dtempurl.com/MODULOS/Cancelaciones_ordenes?token=" + token + "&&id_orden=" + numerodeorden);
+        myWebView.loadUrl("http://delivery.gomotors.mx/MODULOS/Cancelaciones_ordenes?id_orden=" + numerodeorden+"&token=" + token );
         Log.e("consultaWEbC", "http://quesipizzasmx-001-site16.dtempurl.com/MODULOS/Cancelaciones_ordenes?token=" + token + "id_orden=" + numerodeorden);
         // this will enable the javascript.
         myWebView.getSettings().setJavaScriptEnabled(true);

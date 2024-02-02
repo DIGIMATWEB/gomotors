@@ -326,6 +326,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <ImageView
+                    android:id="@+id/warningstop"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/ic_warningstop"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView29"
+                    app:layout_constraintStart_toStartOf="@+id/namerepartidorO" />
                 <TextView
                     android:id="@+id/textView28"
                     android:layout_width="100dp"
@@ -525,7 +533,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/shape_button_carrito"
-        android:text="Cancerlar"
+        android:text="STATUS"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guidelinebuttonsdetail2"
         app:layout_constraintEnd_toStartOf="@+id/buttonenpointOrder"

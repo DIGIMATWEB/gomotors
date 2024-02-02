@@ -3,6 +3,7 @@ package com.gomotorscompany.gomotors.enprodresodetail.view;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.viewpager2.widget.ViewPager2;
@@ -38,6 +40,8 @@ import com.gomotorscompany.gomotors.miscompras.model.get.ProductosU;
 import com.gomotorscompany.gomotors.miscompras.model.get.datagetOrders;
 import com.gomotorscompany.gomotors.retrofit.GeneralConstantsV2;
 import com.bumptech.glide.Glide;
+import com.gomotorscompany.gomotors.webview.webViewCancelaciones;
+import com.gomotorscompany.gomotors.webview.webViewGananciasAdeudos;
 
 import java.util.List;
 
@@ -67,6 +71,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
     private ViewPager2 pager;
     private View viewrecolectar,viewEncola,viewenprogreso,viewterminado;
     private  Drawable blackdot,whitedot;
+    private ImageView warningstop;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -170,6 +175,8 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         imagesemaforo=findViewById(R.id.imagensemaforo);
         buttonenpointOrder2=findViewById(R.id.buttonenpointOrder2);
         buttonenpointOrder2.setOnClickListener(this);
+        warningstop=findViewById(R.id.warningstop);
+        warningstop.setOnClickListener(this);
         buttonenpointOrder=findViewById(R.id.buttonenpointOrder);
         buttonenpointOrder.setOnClickListener(this);
         button=findViewById(R.id.button);
@@ -429,6 +436,12 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
                 if(gerarquiaint==2){
                     presenter.changeStatus(iduser,Integer.valueOf( numerodeorden),6);
                     presenter.liberarRepartidor();
+                    Intent intent1 = new Intent(getApplicationContext(), webViewCancelaciones.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("detailOrderB", numerodeorden);
+                    intent1.putExtras(bundle);
+                    startActivity(intent1);
+                    finish();
                 }
                 if(gerarquiaint==1)
                 {
@@ -447,6 +460,24 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
                 {
                     Toast.makeText(context, "status "+semaforodelaorden, Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case  R.id.warningstop:
+                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+                dialogo1.setTitle("Importante");
+                dialogo1.setMessage("Este boton termina la orden y notifica un problema con su unidad, ¿ Desea ejecutar esta accion?");
+                dialogo1.setCancelable(false);
+                dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+                        presenter.changeStatus(iduser,Integer.valueOf( numerodeorden),400);
+                        presenter.liberarRepartidor();
+                    }
+                });
+                dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogo1, int id) {
+                     dialogo1.dismiss();
+                    }
+                });
+                dialogo1.show();
                 break;
             case R.id.button:
                 if(semaforodelaorden >= 3){

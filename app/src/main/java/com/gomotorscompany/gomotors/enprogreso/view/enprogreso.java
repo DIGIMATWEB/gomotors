@@ -431,23 +431,6 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
                   presenter.setposition(latitude,longitude);
                 }
             }, 10000);
-
         }
-
     }
 }
-//           for(int i=0;i<dataorders.size();i++) {
-//                Log.e("ordeneslista", ""
-//                        + dataorders.get(i).getOrdenNum()+" "
-//                        + dataorders.get(i).getSemaforo()+" "
-//                        + dataorders.get(i).getSemaforo()+" "
-//                        + dataorders.get(i).getToken()+" "
-//                        + dataorders.get(i).getSuc()+" "
-//                        + dataorders.get(i).getFecha()+" "
-//                        + dataorders.get(i).getDireccion()+" "
-//                        + dataorders.get(i).getLatitud()+" "
-//                        + dataorders.get(i).getLonguitud()+" "
-//                        + dataorders.get(i).getPaquete().size()+" "
-//                        + dataorders.get(i).getProductosU().size()+" "
-//                        + dataorders.get(i).getComplemeto().size()+" ");
-//            }
