@@ -98,45 +98,48 @@ public class LoginInteractorImpl implements LoginInteractor {
             if (RetrofitValidationsV2.checkSuccessCode(response.code())) {
                 loginresponseData(response,context,email);
             }else {
-               // Toast.makeText(context, "" + RetrofitValidationsV2.getErrorByStatus(response.code(), context), Toast.LENGTH_SHORT).show();
+              Toast.makeText(context, "" + RetrofitValidationsV2.getErrorByStatus(response.code(), context), Toast.LENGTH_SHORT).show();
             }
         }
     }
 
     private void loginresponseData(Response<LoginResponseV2> response, Context context, String email) {
         LoginResponseV2 myresponse=response.body();
-        if(myresponse!=null)
-        {
-            String code=myresponse.getResponseCode();
-            String message=myresponse.getMessage();
-            if(code.equals("S001"))
-            {
-                UserDataV2[] data=myresponse.getData();
-                //Toast.makeText(context, "nomnbre "+data.getEmployeeName()+" telofono "+data.getTelefono()+"  token "+data.getToken(), Toast.LENGTH_SHORT).show();
-                //Log.e("login",""+"nomnbre "+data.getEmployeeName()+" telofono "+data.getTelefono()+"  token "+data.getToken());
+        if(myresponse!=null) {
+            String code = myresponse.getResponseCode();
+            String message = myresponse.getMessage();
+            if (code!=null){
+                if (code.equals("S001")) {
+                    UserDataV2[] data = myresponse.getData();
+                    //Toast.makeText(context, "nomnbre "+data.getEmployeeName()+" telofono "+data.getTelefono()+"  token "+data.getToken(), Toast.LENGTH_SHORT).show();
+                    //Log.e("login",""+"nomnbre "+data.getEmployeeName()+" telofono "+data.getTelefono()+"  token "+data.getToken());
 
-                 String nombre=data[0].getEmployeeName();
-                 String telefono=data[0].getTelefono();
-                 String token=data[0].getToken();
-                 String cve=data[0].getCve();
-                 int permisionID= data[0].getPermissionsId();
-                Log.e("credenciales","value   "+permisionID);
-                SharedPreferences preferencias=context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES,Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor=preferencias.edit();
+                    String nombre = data[0].getEmployeeName();
+                    String telefono = data[0].getTelefono();
+                    String token = data[0].getToken();
+                    String cve = data[0].getCve();
+                    int permisionID = data[0].getPermissionsId();
+                    Log.e("credenciales", "value   " + permisionID);
+                    SharedPreferences preferencias = context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferencias.edit();
 
-                editor.putString(GeneralConstantsV2.USER_PREFERENCES, nombre);
-                editor.putString(GeneralConstantsV2.TELEPHONE_PREFERENCE, telefono);
-                editor.putString(GeneralConstantsV2.EMAIL_PREFERENCES, email);
-                editor.putString(GeneralConstantsV2.TOKEN_PREFERENCES, token);
-                editor.putString(GeneralConstantsV2.LEVEL_PERMISIONS, String.valueOf(permisionID));
-                editor.putString(GeneralConstantsV2.CVE, cve);
-                editor.commit();
-                presenter.succes();
-                presenter.hideDialog();
-                //Log.e("login",""+preferencias.getString(GeneralConstantsV2.USER_PREFERENCES, null));
+                    editor.putString(GeneralConstantsV2.USER_PREFERENCES, nombre);
+                    editor.putString(GeneralConstantsV2.TELEPHONE_PREFERENCE, telefono);
+                    editor.putString(GeneralConstantsV2.EMAIL_PREFERENCES, email);
+                    editor.putString(GeneralConstantsV2.TOKEN_PREFERENCES, token);
+                    editor.putString(GeneralConstantsV2.LEVEL_PERMISIONS, String.valueOf(permisionID));
+                    editor.putString(GeneralConstantsV2.CVE, cve);
+                    editor.commit();
+                    presenter.succes();
+                    presenter.hideDialog();
+                    //Log.e("login",""+preferencias.getString(GeneralConstantsV2.USER_PREFERENCES, null));
 
-            }else{
-                Toast.makeText(context, "response : " + code+" "+message , Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "response : " + code + " " + message, Toast.LENGTH_SHORT).show();
+                    presenter.hideDialog();
+                }
+             }else {
+                Toast.makeText(context, "Hubo un problema de acceso con este usuario", Toast.LENGTH_SHORT).show();
                 presenter.hideDialog();
             }
         }
