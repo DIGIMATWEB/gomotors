@@ -3,7 +3,7 @@ package com.gomotorscompany.gomotors.retrofit;
 public class RetrofitEndPointsV2 {
     public static final String URL_SERVER = "http://ccordova-002-site21.itempurl.com/";
     public static final String URL_MAP_API="http://newlandapps.com/";
-    public static final String ADMIN_LOG="http://digimat-interactive.com/";
+    public static final String ADMIN_LOG="http://digimat-interactive.com/gomotors/";
     public static final String AVAILABLE_APP="f12available.php";
 
 
