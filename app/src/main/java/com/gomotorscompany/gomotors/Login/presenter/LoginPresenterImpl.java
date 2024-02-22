@@ -19,6 +19,20 @@ public class LoginPresenterImpl implements  LoginPresenter{
     }
 
     @Override
+    public void getAvailable() {
+        if(view!=null) {
+            interactor.getAvailable();
+        }
+    }
+
+    @Override
+    public void setDialog() {
+        if(view!=null) {
+            view.setDialog();
+        }
+    }
+
+    @Override
     public void setView(LoginViewImpl view) {
         this.view=view;
     }

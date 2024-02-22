@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gomotorscompany.gomotors.Dialogs.Alert.warningAlert;
 import com.gomotorscompany.gomotors.Dialogs.RepartidorRegistro.keyRegister;
 import com.gomotorscompany.gomotors.R;
 import com.gomotorscompany.gomotors.Login.presenter.LoginPresenter;
@@ -136,6 +137,7 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
 
         presenter = new LoginPresenterImpl(this,getContext());
         presenter.setView(this);
+        presenter.getAvailable();
         disabledTextInputAnimation();
 
 
@@ -313,6 +315,12 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP);//
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    @Override
+    public void setDialog() {
+        warningAlert dialogFragment = new warningAlert();
+        dialogFragment.show(requireActivity().getSupportFragmentManager(), "warningAlert");
     }
 
 

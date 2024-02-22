@@ -4,4 +4,6 @@ public interface LoginInteractor {
     void requestLogin(String telephone,String pass );
 
     void checkStatus(String token);
+
+    void getAvailable();
 }

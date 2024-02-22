@@ -3,6 +3,9 @@ package com.gomotorscompany.gomotors.Login.presenter;
 import com.gomotorscompany.gomotors.Login.view.LoginViewImpl;
 
 public interface LoginPresenter {
+    void getAvailable();
+
+    void setDialog();
     void setView(LoginViewImpl view);
     void loginRequest(String telephone,String pass );
 

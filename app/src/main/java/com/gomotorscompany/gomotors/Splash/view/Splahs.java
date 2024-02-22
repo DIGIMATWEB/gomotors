@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.gomotorscompany.gomotors.Dialogs.Alert.warningAlert;
 import com.gomotorscompany.gomotors.R;
 import com.gomotorscompany.gomotors.Login.view.LoginContainer;
 import com.gomotorscompany.gomotors.Splash.presenter.presenterspalshImplements;
@@ -41,6 +43,7 @@ public class Splahs extends AppCompatActivity implements  splashView{
         imageBackground =findViewById(R.id.logotipo);
         imageBackground.setVisibility(View.VISIBLE);
         presenter=new presenterspalshImplements(this,getApplicationContext());
+        presenter.getAvailable();
         presenter.requestsplashConfig();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, +WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Glide.with(this).load(R.mipmap.ic_logo).into(imageBackground);
@@ -102,6 +105,13 @@ public class Splahs extends AppCompatActivity implements  splashView{
         rgbaColor=colorApp;
 
     }
+
+    @Override
+    public void setDialog() {
+        warningAlert dialogFragment = new warningAlert();
+        dialogFragment.show(getSupportFragmentManager(), "warningAlert");
+    }
+
     private void continueSplash()
     {
         new Handler().postDelayed(new Runnable() {

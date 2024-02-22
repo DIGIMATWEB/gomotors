@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.gomotorscompany.gomotors.Dialogs.Alert.model.requestAvailable;
+import com.gomotorscompany.gomotors.Dialogs.Alert.model.responseAvailable;
+import com.gomotorscompany.gomotors.Dialogs.Alert.util.availableService;
 import com.gomotorscompany.gomotors.Login.model.LoginRequestV2;
 import com.gomotorscompany.gomotors.Login.model.LoginResponseV2;
 import com.gomotorscompany.gomotors.Login.model.UserDataV2;
@@ -13,6 +16,7 @@ import com.gomotorscompany.gomotors.Login.model.isactiveRequest;
 import com.gomotorscompany.gomotors.Login.presenter.LoginPresenter;
 import com.gomotorscompany.gomotors.Login.utils.LoginServicesV2;
 import com.gomotorscompany.gomotors.retrofit.GeneralConstantsV2;
+import com.gomotorscompany.gomotors.retrofit.RetrofitClientADMIN;
 import com.gomotorscompany.gomotors.retrofit.RetrofitClientV3;
 import com.gomotorscompany.gomotors.retrofit.RetrofitValidationsV2;
 
@@ -24,14 +28,20 @@ import retrofit2.Retrofit;
 public class LoginInteractorImpl implements LoginInteractor {
     private Context context;
     private LoginPresenter presenter;
-    private Retrofit retrofitClient;
+    private Retrofit retrofitClient,retrofitClientAdmin;
     private LoginServicesV2 service;
+
+
+    private availableService service2;
     public LoginInteractorImpl(LoginPresenter presenter,Context context)
     {
         this.presenter=presenter;
         this.context=context;
         retrofitClient = RetrofitClientV3.getRetrofitInstancev3();
         service = retrofitClient.create(LoginServicesV2.class);
+
+        retrofitClientAdmin= RetrofitClientADMIN.getRetrofitInstance();
+        service2 = retrofitClientAdmin.create(availableService.class);
     }
 
 
@@ -72,6 +82,34 @@ public class LoginInteractorImpl implements LoginInteractor {
       });
     }
 
+    @Override
+    public void getAvailable() {
+        requestAvailable request= new requestAvailable("3","gomotors");
+        Call<responseAvailable> call = service2.getAvaileble(request);
+        call.enqueue(new Callback<responseAvailable>() {
+            @Override
+            public void onResponse(Call<responseAvailable> call, Response<responseAvailable> response) {
+                if(response.body().getResconseCode()==200){
+                    if(response.body().getData().getAvailable().equals("0")){
+                        SharedPreferences preferences = context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.remove(GeneralConstantsV2.TOKEN_PREFERENCES);
+                        editor.apply();
+                        presenter.setDialog();
+                    }else{
+                        Log.e("available",""+response.body().getData().getAvailable());
+                    }
+                }else {
+                    Log.e("available",""+response.body().getResconseCode());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<responseAvailable> call, Throwable t) {
+                Log.e("available",""+t.getMessage());
+            }
+        });
+    }
     private void requestokLogin(String user, String pass) {
         LoginRequestV2 request= new LoginRequestV2(user,pass);
         presenter.showDialog();

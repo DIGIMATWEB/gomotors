@@ -10,4 +10,6 @@ public interface LoginView {
     void succesLogin();
 
     void succesLoginf();
+
+    void setDialog();
 }

@@ -26,6 +26,20 @@ public class presenterspalshImplements  implements  presentersplash{
     }
 
     @Override
+    public void getAvailable() {
+        if(view!=null) {
+            interactor.getAvailable();
+        }
+    }
+
+    @Override
+    public void setDialog() {
+        if(view!=null) {
+            view.setDialog();
+        }
+    }
+
+    @Override
     public void setMaincolor(String colorApp) {
         if(view!=null) {
             view.setColorAPP(colorApp);
@@ -38,4 +52,5 @@ public class presenterspalshImplements  implements  presentersplash{
             view.setSplashImge(imageapp);
         }
     }
+
 }

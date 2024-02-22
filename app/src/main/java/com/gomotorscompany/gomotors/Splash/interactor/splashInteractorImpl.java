@@ -2,14 +2,19 @@ package com.gomotorscompany.gomotors.Splash.interactor;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.gomotorscompany.gomotors.Dialogs.Alert.model.requestAvailable;
+import com.gomotorscompany.gomotors.Dialogs.Alert.model.responseAvailable;
+import com.gomotorscompany.gomotors.Dialogs.Alert.util.availableService;
 import com.gomotorscompany.gomotors.Splash.model.dataSplash;
 import com.gomotorscompany.gomotors.Splash.model.requestSplash;
 import com.gomotorscompany.gomotors.Splash.model.responseSplash;
 import com.gomotorscompany.gomotors.Splash.presenter.presentersplash;
 import com.gomotorscompany.gomotors.Splash.utils.splashService;
 import com.gomotorscompany.gomotors.retrofit.GeneralConstantsV2;
+import com.gomotorscompany.gomotors.retrofit.RetrofitClientADMIN;
 import com.gomotorscompany.gomotors.retrofit.RetrofitClientV3;
 import com.gomotorscompany.gomotors.retrofit.RetrofitValidationsV2;
 
@@ -25,8 +30,9 @@ public class splashInteractorImpl  implements  splashInteractor{
 
     private presentersplash presenter;
     private Context context;
-    private Retrofit retrofitClient;
+    private Retrofit retrofitClient,retrofitClientAdmin;
     private splashService service;
+    private availableService service2;
 
     public splashInteractorImpl(presentersplash presenter, Context context)
     {
@@ -35,6 +41,8 @@ public class splashInteractorImpl  implements  splashInteractor{
         retrofitClient = RetrofitClientV3.getRetrofitInstancev3();
         service = retrofitClient.create(splashService.class);
 
+        retrofitClientAdmin= RetrofitClientADMIN.getRetrofitInstance();
+        service2 = retrofitClientAdmin.create(availableService.class);
     }
 
     @Override
@@ -45,6 +53,35 @@ public class splashInteractorImpl  implements  splashInteractor{
         {
             getplashData(token);
         }
+    }
+
+    @Override
+    public void getAvailable() {
+        requestAvailable request= new requestAvailable("3","gomotors");
+        Call<responseAvailable> call = service2.getAvaileble(request);
+        call.enqueue(new Callback<responseAvailable>() {
+            @Override
+            public void onResponse(Call<responseAvailable> call, Response<responseAvailable> response) {
+                if(response.body().getResconseCode()==200){
+                    if(response.body().getData().getAvailable().equals("0")){
+                        SharedPreferences preferences = context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.remove(GeneralConstantsV2.TOKEN_PREFERENCES);
+                        editor.apply();
+                        presenter.setDialog();
+                    }else{
+                        Log.e("available",""+response.body().getData().getAvailable());
+                    }
+                }else {
+                    Log.e("available",""+response.body().getResconseCode());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<responseAvailable> call, Throwable t) {
+                Log.e("available",""+t.getMessage());
+            }
+        });
     }
 
     private void getplashData(String token) {
