@@ -3,7 +3,7 @@ package com.gomotorscompany.gomotors.enprogreso.interactor;
 public interface ordersInteractor {
     void requesAllOrders();
 
-    void setpositionDriver(double latitude, double longitude);
+    void setpositionDriver(Double latitude, Double longitude);
 
     void liberarRepartidor();
 

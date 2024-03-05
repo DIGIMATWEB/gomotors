@@ -93,7 +93,7 @@ public class presenterrequestOrdersImpl implements presenterrequestOrders {
 
 
     @Override
-    public void setposition(double latitude, double longitude) {
+    public void setposition(Double latitude, Double longitude) {
         if(view!=null)
         {
             interactor.setpositionDriver(latitude,longitude);

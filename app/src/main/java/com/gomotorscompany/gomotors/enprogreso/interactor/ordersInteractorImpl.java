@@ -2,9 +2,11 @@ package com.gomotorscompany.gomotors.enprogreso.interactor;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.gomotorscompany.gomotors.Dialogs.Alert.util.availableService;
 import com.gomotorscompany.gomotors.Login.model.isActiveResponse;
 import com.gomotorscompany.gomotors.Login.model.isactiveRequest;
 import com.gomotorscompany.gomotors.enprodresodetail.model.repartidor.requetsliberar;
@@ -12,6 +14,8 @@ import com.gomotorscompany.gomotors.enprodresodetail.model.repartidor.responseLi
 import com.gomotorscompany.gomotors.enprogreso.model.chekpending.dataorderspending;
 import com.gomotorscompany.gomotors.enprogreso.model.chekpending.requestpending;
 import com.gomotorscompany.gomotors.enprogreso.model.chekpending.responsependientes;
+import com.gomotorscompany.gomotors.enprogreso.model.digimatlocation.requestLocations;
+import com.gomotorscompany.gomotors.enprogreso.model.digimatlocation.responseLocation;
 import com.gomotorscompany.gomotors.enprogreso.model.responseNewLocationDriver;
 import com.gomotorscompany.gomotors.enprogreso.model.setNewlocationDriver;
 import com.gomotorscompany.gomotors.enprogreso.presenter.presenterrequestOrders;
@@ -22,6 +26,7 @@ import com.gomotorscompany.gomotors.miscompras.model.get.responseGetOrder;
 import com.gomotorscompany.gomotors.pedido.model.others.responseAsignaciondelaOrden;
 import com.gomotorscompany.gomotors.pedido.model.others.setAginaciondeOrdenes;
 import com.gomotorscompany.gomotors.retrofit.GeneralConstantsV2;
+import com.gomotorscompany.gomotors.retrofit.RetrofitClientADMIN;
 import com.gomotorscompany.gomotors.retrofit.RetrofitClientV3;
 import com.gomotorscompany.gomotors.retrofit.RetrofitValidationsV2;
 
@@ -37,25 +42,56 @@ public class ordersInteractorImpl  implements ordersInteractor{
     private Context context;
     private presenterrequestOrders presenter;
     private servicegetOrders service;
-    private Retrofit retrofitClient;
+    private Retrofit retrofitClient,retrofitClientAdmin;
+    private availableService service2;;
     public  ordersInteractorImpl(presenterrequestOrders presenter,Context context)
     {
         this.presenter=presenter;
         this.context=context;
             retrofitClient = RetrofitClientV3.getRetrofitInstancev3();
             service = retrofitClient.create(servicegetOrders.class);
+
+        retrofitClientAdmin= RetrofitClientADMIN.getRetrofitInstance();
+        service2 = retrofitClientAdmin.create(availableService.class);
     }
 
 
     @Override
-    public void setpositionDriver(double latitude, double longitude) {
+    public void setpositionDriver(Double latitude, Double longitude) {
         SharedPreferences preferences = context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
         String token     = preferences.getString(GeneralConstantsV2.TOKEN_PREFERENCES, null);
+        String serialNumber = Build.SERIAL;
         if(token!=null)
         {
             Log.e("token",""+token);
             setNewPosition(token,latitude,longitude);
+            if(serialNumber!=null&&latitude!=null&&longitude!=null) {
+                setPositionVehicle(serialNumber, latitude, longitude);
+            }
         }
+
+    }
+
+    private void setPositionVehicle(String serialNumber, double latitude, double longitude) {
+        requestLocations request= new requestLocations(serialNumber,String.valueOf(latitude),String.valueOf(longitude)) ;
+        Call<responseLocation> call=service2.getlocationVehicle(request);
+        call.enqueue(new Callback<responseLocation>() {
+            @Override
+            public void onResponse(Call<responseLocation> call, Response<responseLocation> response) {
+                if(response.body().getResponseCode()==200){
+
+                 Log.e("Location","location succes");
+
+                }else {
+                  Log.e("Location","location fail");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<responseLocation> call, Throwable t) {
+                Log.e("Location","location fail");
+            }
+        });
 
     }
 

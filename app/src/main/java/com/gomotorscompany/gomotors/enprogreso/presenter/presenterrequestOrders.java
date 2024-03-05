@@ -10,7 +10,7 @@ public interface presenterrequestOrders {
     void setdatatoView(List<datagetOrders> data);
 
 
-    void setposition(double latitude, double longitude);
+    void setposition(Double latitude, Double longitude);
     void hideprogresdialog();
 
     void showprogresdialog();
