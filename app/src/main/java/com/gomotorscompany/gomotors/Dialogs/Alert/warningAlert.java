@@ -26,7 +26,7 @@ public class warningAlert extends DialogFragment implements View.OnClickListener
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_aler_warning, container, false);
-        getDialog().getWindow().setBackgroundDrawableResource(R.color.customTransparent) ;
+        getDialog().getWindow().setBackgroundDrawableResource(R.color.whiteT) ;
         setCancelable(false);
         //  mainActivity= (mainContentViewImpl) this.getActivity();
         initDialog(view);
