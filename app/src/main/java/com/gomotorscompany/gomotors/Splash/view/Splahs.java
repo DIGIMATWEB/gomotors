@@ -43,7 +43,7 @@ public class Splahs extends AppCompatActivity implements  splashView{
         imageBackground =findViewById(R.id.logotipo);
         imageBackground.setVisibility(View.VISIBLE);
         presenter=new presenterspalshImplements(this,getApplicationContext());
-        presenter.getAvailable();
+        //presenter.getAvailable();
         presenter.requestsplashConfig();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, +WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Glide.with(this).load(R.mipmap.ic_logo).into(imageBackground);
