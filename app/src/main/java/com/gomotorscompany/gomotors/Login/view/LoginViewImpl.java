@@ -137,7 +137,7 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
 
         presenter = new LoginPresenterImpl(this,getContext());
         presenter.setView(this);
-      //  presenter.getAvailable();
+        presenter.getAvailable();
         disabledTextInputAnimation();
 
 
@@ -200,9 +200,9 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
                         // Obtain the phone number from the result
                         Credential credentials = data.getParcelableExtra(Credential.EXTRA_KEY);
                        // EditText.setText(credentials.getId().substring(3));
-                        if(credentials!=null)
-                        Log.e("loginGoogle","telefono "+credentials.getId().substring(3));
-
+                        if(credentials!=null) {
+                           Log.e("loginGoogle","telefono "+credentials.getId().substring(3));
+                        }
 
                     }
                     else if (requestCode == CREDENTIAL_PICKER_REQUEST && resultCode == CredentialsApi.ACTIVITY_RESULT_NO_HINTS_AVAILABLE)

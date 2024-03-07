@@ -27,6 +27,7 @@ import com.gomotorscompany.gomotors.pedido.model.others.responseAsignaciondelaOr
 import com.gomotorscompany.gomotors.pedido.model.others.setAginaciondeOrdenes;
 import com.gomotorscompany.gomotors.retrofit.GeneralConstantsV2;
 import com.gomotorscompany.gomotors.retrofit.RetrofitClientADMIN;
+import com.gomotorscompany.gomotors.retrofit.RetrofitClientADMIN2;
 import com.gomotorscompany.gomotors.retrofit.RetrofitClientV3;
 import com.gomotorscompany.gomotors.retrofit.RetrofitValidationsV2;
 
@@ -51,7 +52,7 @@ public class ordersInteractorImpl  implements ordersInteractor{
             retrofitClient = RetrofitClientV3.getRetrofitInstancev3();
             service = retrofitClient.create(servicegetOrders.class);
 
-        retrofitClientAdmin= RetrofitClientADMIN.getRetrofitInstance();
+        retrofitClientAdmin= RetrofitClientADMIN2.getRetrofitInstance();
         service2 = retrofitClientAdmin.create(availableService.class);
     }
 
@@ -60,13 +61,14 @@ public class ordersInteractorImpl  implements ordersInteractor{
     public void setpositionDriver(Double latitude, Double longitude) {
         SharedPreferences preferences = context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
         String token     = preferences.getString(GeneralConstantsV2.TOKEN_PREFERENCES, null);
+        String email     = preferences.getString(GeneralConstantsV2.EMAIL_PREFERENCES, null);
         String serialNumber = Build.SERIAL;
         if(token!=null)
         {
             Log.e("token",""+token);
             setNewPosition(token,latitude,longitude);
             if(serialNumber!=null&&latitude!=null&&longitude!=null) {
-                setPositionVehicle(serialNumber, latitude, longitude);
+                setPositionVehicle(email, latitude, longitude);
             }
         }
 
@@ -78,15 +80,20 @@ public class ordersInteractorImpl  implements ordersInteractor{
         call.enqueue(new Callback<responseLocation>() {
             @Override
             public void onResponse(Call<responseLocation> call, Response<responseLocation> response) {
-                if(response.body().getResponseCode()==200){
+                if(response!=null) {
+                    if(response.body()!=null) {
+                        if(response.body().getResponseCode() !=null) {
+                            if (response.body().getResponseCode() == 200) {
 
-                 Log.e("Location","location succes");
+                                Log.e("Location", "location succes");
 
-                }else {
-                  Log.e("Location","location fail");
+                            } else {
+                                Log.e("Location", "location fail");
+                            }
+                        }
+                    }
                 }
             }
-
             @Override
             public void onFailure(Call<responseLocation> call, Throwable t) {
                 Log.e("Location","location fail");

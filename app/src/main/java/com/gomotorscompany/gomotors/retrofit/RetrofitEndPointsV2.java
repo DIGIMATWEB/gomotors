@@ -3,10 +3,11 @@ package com.gomotorscompany.gomotors.retrofit;
 public class RetrofitEndPointsV2 {
     public static final String URL_SERVER = "http://ccordova-002-site21.itempurl.com/";
     public static final String URL_MAP_API="http://newlandapps.com/";
+    public static final String ADMIN_LOG0="http://digimat-interactive.com/";
     public static final String ADMIN_LOG="http://digimat-interactive.com/gomotors/";
-    public static final String AVAILABLE_APP="f15vehicleSetLocation";
+    public static final String AVAILABLE_APP="f12available.php";
 
-
+    public static final String SET_LOCATION_DIGIMAT="f15vehicleSetLocation.php";
 
     public static final String LOGIN = "api/[Delivery_01_Login_ClientController]/Find";
     public static final String GET_ALLMENU = "api/[Delivery_GetMenuItemsController]/Find";

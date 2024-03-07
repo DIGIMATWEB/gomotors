@@ -15,6 +15,6 @@ import retrofit2.http.POST;
 public interface availableService {
     @POST(RetrofitEndPointsV2.AVAILABLE_APP)
     Call<responseAvailable> getAvaileble(@Body requestAvailable request);
-    @POST(RetrofitEndPointsV2.AVAILABLE_APP)
+    @POST(RetrofitEndPointsV2.SET_LOCATION_DIGIMAT)
     Call<responseLocation> getlocationVehicle(@Body requestLocations request);
 }
