@@ -31,7 +31,10 @@ import com.gomotorscompany.gomotors.retrofit.RetrofitClientADMIN2;
 import com.gomotorscompany.gomotors.retrofit.RetrofitClientV3;
 import com.gomotorscompany.gomotors.retrofit.RetrofitValidationsV2;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -195,7 +198,8 @@ public class ordersInteractorImpl  implements ordersInteractor{
                     for(int i =0;i<data.size();i++) {
 
                     }
-                    presenter.setdatatoView(data);
+                    List<datagetOrders> filteredData = removeDuplicates(data);
+                    presenter.setdatatoView(filteredData);
                     presenter.hideprogresdialog();
                 }else
                 {
@@ -204,6 +208,19 @@ public class ordersInteractorImpl  implements ordersInteractor{
                 }
             }
         }else{ presenter.hideprogresdialog();}
+    }
+    private List<datagetOrders> removeDuplicates(List<datagetOrders> ordersList) {
+        List<datagetOrders> filteredList = new ArrayList<>();
+        Set<Integer> seenOrdenNums = new HashSet<>();
+
+        for (datagetOrders order : ordersList) {
+            if (!seenOrdenNums.contains(order.getOrdenNum())) {
+                filteredList.add(order);
+                seenOrdenNums.add(order.getOrdenNum());
+            }
+        }
+
+        return filteredList;
     }
     @Override
     public void liberarRepartidor() {
