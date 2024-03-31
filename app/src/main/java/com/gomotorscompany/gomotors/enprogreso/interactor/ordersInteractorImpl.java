@@ -26,7 +26,6 @@ import com.gomotorscompany.gomotors.miscompras.model.get.responseGetOrder;
 import com.gomotorscompany.gomotors.pedido.model.others.responseAsignaciondelaOrden;
 import com.gomotorscompany.gomotors.pedido.model.others.setAginaciondeOrdenes;
 import com.gomotorscompany.gomotors.retrofit.GeneralConstantsV2;
-import com.gomotorscompany.gomotors.retrofit.RetrofitClientADMIN;
 import com.gomotorscompany.gomotors.retrofit.RetrofitClientADMIN2;
 import com.gomotorscompany.gomotors.retrofit.RetrofitClientV3;
 import com.gomotorscompany.gomotors.retrofit.RetrofitValidationsV2;
@@ -65,20 +64,21 @@ public class ordersInteractorImpl  implements ordersInteractor{
         SharedPreferences preferences = context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
         String token     = preferences.getString(GeneralConstantsV2.TOKEN_PREFERENCES, null);
         String email     = preferences.getString(GeneralConstantsV2.EMAIL_PREFERENCES, null);
+        String mshell    = preferences.getString(GeneralConstantsV2.SHELL,null);
         String serialNumber = Build.SERIAL;
         if(token!=null)
         {
             Log.e("token",""+token);
             setNewPosition(token,latitude,longitude);
             if(serialNumber!=null&&latitude!=null&&longitude!=null) {
-                setPositionVehicle(email, latitude, longitude);
+                setPositionVehicle(email, latitude, longitude,mshell);
             }
         }
 
     }
 
-    private void setPositionVehicle(String serialNumber, double latitude, double longitude) {
-        requestLocations request= new requestLocations(serialNumber,String.valueOf(latitude),String.valueOf(longitude)) ;
+    private void setPositionVehicle(String serialNumber, double latitude, double longitude, String mshell) {
+        requestLocations request= new requestLocations(serialNumber,String.valueOf(latitude),String.valueOf(longitude),mshell) ;
         Call<responseLocation> call=service2.getlocationVehicle(request);
         call.enqueue(new Callback<responseLocation>() {
             @Override

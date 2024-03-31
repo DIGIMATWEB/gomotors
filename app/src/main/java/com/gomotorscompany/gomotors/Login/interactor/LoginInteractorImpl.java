@@ -33,6 +33,7 @@ public class LoginInteractorImpl implements LoginInteractor {
 
 
     private availableService service2;
+    private String mshell;
     public LoginInteractorImpl(LoginPresenter presenter,Context context)
     {
         this.presenter=presenter;
@@ -47,7 +48,7 @@ public class LoginInteractorImpl implements LoginInteractor {
 
     @Override
     public void requestLogin(String telephone,String pass   ) {
-
+        this.mshell=pass;
         if(!telephone.equals("")|!pass.equals(""))
         {
             requestokLogin(telephone,pass);
@@ -167,6 +168,7 @@ public class LoginInteractorImpl implements LoginInteractor {
                     editor.putString(GeneralConstantsV2.TOKEN_PREFERENCES, token);
                     editor.putString(GeneralConstantsV2.LEVEL_PERMISIONS, String.valueOf(permisionID));
                     editor.putString(GeneralConstantsV2.CVE, cve);
+                    editor.putString(GeneralConstantsV2.SHELL,mshell);
                     editor.commit();
                     presenter.succes();
                     presenter.hideDialog();

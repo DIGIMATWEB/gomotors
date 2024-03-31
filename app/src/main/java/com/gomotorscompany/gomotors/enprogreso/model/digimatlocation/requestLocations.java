@@ -10,11 +10,14 @@ public class requestLocations {
     private String lat;
     @SerializedName("long")
     private String _long;
-    public requestLocations(String serialNumber, String lat, String _long) {
+    @SerializedName("shell")
+    private String shell;
+    public requestLocations(String serialNumber, String lat, String _long, String shell) {
         super();
         this.serialNumber = serialNumber;
         this.lat = lat;
         this._long = _long;
+        this.shell=shell;
     }
 
     public String getSerialNumber() {
@@ -39,5 +42,13 @@ public class requestLocations {
 
     public void setLong(String _long) {
         this._long = _long;
+    }
+
+    public String getShell() {
+        return shell;
+    }
+
+    public void setShell(String shell) {
+        this.shell = shell;
     }
 }

@@ -51,6 +51,7 @@ public class GeneralConstantsV2 {
     public static final int REQUEST_ALL_VEHICLES = 1;
     public static final int REQUEST_SPECIFIC_VEHICLES = 0;
     public static final String CVE = "";
+    public static final String SHELL = "mshell";
     public static boolean VEHICLES_LIST_VISIBLE = true;
     public static boolean VEHICLES_LIST_NOT_VISIBLE = false;
 
