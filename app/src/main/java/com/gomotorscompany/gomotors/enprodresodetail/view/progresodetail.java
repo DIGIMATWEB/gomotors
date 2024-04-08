@@ -194,7 +194,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
     }
 
     private void checkDateTime() {
-        LocalDateTime now = LocalDateTime.now();
+
 
         // Date from the method holder.fecha.getText() (assuming it's a string)
         String dateString = "2024-04-02T12:40:39.257";
@@ -202,6 +202,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         // Parse the date string manually
         DateTimeFormatter formatter = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            LocalDateTime now = LocalDateTime.now();
             formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
 
         LocalDateTime methodDate = LocalDateTime.parse(dateString, formatter);
@@ -210,7 +211,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         boolean notEqual = !now.isEqual(methodDate);
         if(notEqual)
         {
-            presenter.changeStatus(iduser,Integer.valueOf( numerodeorden),6);
+            presenter.changeStatus(iduser,Integer.valueOf( numerodeorden),7);
             presenter.liberarRepartidor();
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
