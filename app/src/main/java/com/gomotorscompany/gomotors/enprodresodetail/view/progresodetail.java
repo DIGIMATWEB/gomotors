@@ -43,6 +43,8 @@ import com.bumptech.glide.Glide;
 import com.gomotorscompany.gomotors.webview.webViewCancelaciones;
 import com.gomotorscompany.gomotors.webview.webViewGananciasAdeudos;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class progresodetail extends AppCompatActivity implements View.OnClickListener , LocationListener,progresdetailView {
@@ -186,7 +188,42 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         button3=findViewById(R.id.button3);
         button3.setOnClickListener(this);
         /**Aqui guardar los detalles*/
+        checkDateTime();
         setColorSemaforImage();
+
+    }
+
+    private void checkDateTime() {
+        LocalDateTime now = LocalDateTime.now();
+
+        // Date from the method holder.fecha.getText() (assuming it's a string)
+        String dateString = "2024-04-02T12:40:39.257";
+
+        // Parse the date string manually
+        DateTimeFormatter formatter = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
+
+        LocalDateTime methodDate = LocalDateTime.parse(dateString, formatter);
+
+        // Compare the two dates
+        boolean notEqual = !now.isEqual(methodDate);
+        if(notEqual)
+        {
+            presenter.changeStatus(iduser,Integer.valueOf( numerodeorden),6);
+            presenter.liberarRepartidor();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Call onBackPressed() here
+                    onBackPressed();
+                }
+            }, 5000);
+        }
+        }else{
+            Toast.makeText(context, "solicite a su administracion una revision del folio", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void hidebutonscallandmensage()
