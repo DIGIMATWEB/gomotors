@@ -316,6 +316,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
             viewenprogreso.setBackground(blackdot);
             viewterminado.setBackground(whitedot);
             showbutonscallandmensage();
+            button2.setVisibility(View.GONE);
             if(gerarquiaint==2)
             {
                 buttonenpointOrder.setText("No entregado");
@@ -540,6 +541,11 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
                /* Intent intetnsms = new Intent(Intent.ACTION_SENDTO).setData(Uri.parse(String.format("smsto:%s", telefono))).putExtra("Mensaje", "Notificación gomotors");
                 intetnsms.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intetnsms);*/
+                String url = "https://api.whatsapp.com/send?phone="+"8717691978"+"&text="+"*De*:%20"+"iduser"+"%0A"+"*Asunto*:%20"+ "Soporte"+"%0A"+"%0A"+
+                        "orden: "+numerodeorden;//5218124691084 525617224632
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
                 /**include  spinner to chat*/
                 /**
                  *         asignando asignandopedido=new asignando();

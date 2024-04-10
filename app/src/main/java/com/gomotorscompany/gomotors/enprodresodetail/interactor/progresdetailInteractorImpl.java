@@ -77,7 +77,7 @@ public class progresdetailInteractorImpl implements progresdetailInteractor{
                     }else if(responsCode.equals("OK"))
                     {
                         presenter.succesChangeStatus(105,status);
-                        Toast.makeText(context, "succesnew location driver", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "succesnew location driver", Toast.LENGTH_SHORT).show();
                     }
                 }
     }
