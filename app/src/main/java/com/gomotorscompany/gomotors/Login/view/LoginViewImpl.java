@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import com.gomotorscompany.gomotors.BuildConfig;
 import com.gomotorscompany.gomotors.BuildConfig;
 import com.gomotorscompany.gomotors.Dialogs.Alert.warningAlert;
 import com.gomotorscompany.gomotors.Dialogs.RepartidorRegistro.keyRegister;
@@ -94,12 +95,11 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
                         .build();
 
         mSignInClient = GoogleSignIn.getClient(getActivity().getApplicationContext(), options);
-        String versionName = BuildConfig.VERSION_NAME;
-        int versionCode = BuildConfig.VERSION_CODE;
+
 
         imagecompany=view.findViewById(R.id.img_login_icon);
         version =view.findViewById(R.id.version);
-        version.setText("V"+versionName);
+        version.setText("V"+"0.1.51");
         textInputLayoutUser = view.findViewById(R.id.til_user);
         textInputLayoutPass = view.findViewById(R.id.til_password);
         edtUserOrEmail = view.findViewById(R.id.edtUserOrEmail);
@@ -317,8 +317,7 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
     @Override
     public void succesLoginf() {
         Intent intent = new Intent(getActivity(), mainContentViewImpl.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_CLEAR_TOP);//
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 

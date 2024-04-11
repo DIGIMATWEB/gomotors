@@ -5,13 +5,12 @@ plugins {
 
 android {
     compileSdk 33
-
     defaultConfig {
         applicationId "com.gomotorscompany.gomotors"
         minSdk 23
         targetSdk 33
-        versionCode 48
-        versionName "0.1.48"
+        versionCode 51
+        versionName "0.1.51"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

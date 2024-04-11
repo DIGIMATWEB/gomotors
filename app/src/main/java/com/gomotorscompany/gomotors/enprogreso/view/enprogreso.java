@@ -51,17 +51,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class enprogreso extends Fragment implements View.OnClickListener,enprogresoView, LocationListener {
+public class enprogreso extends Fragment implements View.OnClickListener, enprogresoView, LocationListener {
     public static final String TAG = enprogreso.class.getSimpleName();
     private presenterrequestOrders presenter;
     private List<datagetOrders> dataorders;
     private adapterOrdenes adapter;
     private adapterPendientes adapterpendings;
-    private RecyclerView rv,rvpendientes;
+    private RecyclerView rv, rvpendientes;
     private ImageView chart;
-    private ConstraintLayout constrainpiechr,pedidosencola,dialogpendientes;
+    private ConstraintLayout constrainpiechr, pedidosencola, dialogpendientes;
     private PieChart pieChart2;
-    private double latitude,longitude;
+    private double latitude, longitude;
     private LocationManager locationManager;
     private int gerarquiaint;
     private ProgressDialog progressDialog;
@@ -72,6 +72,7 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
     private ImageView closependingorders;
     private Bundle mainbundle;
     private Button refresh;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -89,37 +90,60 @@ public class enprogreso extends Fragment implements View.OnClickListener,enprogr
 
     private void checkpermisionslevel() {
         SharedPreferences preferencias = getActivity().getApplicationContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
-        String gerarquia     = preferencias.getString(GeneralConstantsV2.LEVEL_PERMISIONS, null);
+        String gerarquia = preferencias.getString(GeneralConstantsV2.LEVEL_PERMISIONS, null);
 
-        if(gerarquia.equals("1")) {
-            gerarquiaint=Integer.valueOf( gerarquia);
+        if (gerarquia.equals("1")) {
+            gerarquiaint = Integer.valueOf(gerarquia);
             Log.e("ordeneslista", "admministrador   " + gerarquia);
-        }else if(gerarquia.equals("2"))
-        {
-            gerarquiaint=Integer.valueOf( gerarquia);
+        } else if (gerarquia.equals("2")) {
+            gerarquiaint = Integer.valueOf(gerarquia);
             Log.e("ordeneslista", "repartidores   " + gerarquia);
 
 
-            locationManager= (LocationManager)getContext().getSystemService(Context.LOCATION_SERVICE);
-            if (ActivityCompat.checkSelfPermission(this.getContext(),
-                    Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions((this.getActivity()), new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
-
+            locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // If permissions are not granted, request them from the user
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
+            } else {
+                // If permissions are granted, proceed with requesting location updates
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 200, 5, this);
             }
-            if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,200,5,this);
+            if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 200, 5, this);
             } else {
 
             }
 
-        }
-        else if(gerarquia.equals("3"))
-        {
-            gerarquiaint=Integer.valueOf( gerarquia);
+        } else if (gerarquia.equals("3")) {
+            gerarquiaint = Integer.valueOf(gerarquia);
             Log.e("ordeneslista", " usuario cliente  " + gerarquia);
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 101) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, proceed with location updates
+                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 200, 5, this);
+            } else {
+                // Permission denied, handle accordingly (e.g., show a message to the user)
+                Toast.makeText(getContext(), "Location permissions are required for this feature.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
     private void initView(View view) {
 
         /** miscompras / model / get */
