@@ -188,7 +188,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         button3=findViewById(R.id.button3);
         button3.setOnClickListener(this);
         /**Aqui guardar los detalles*/
-        checkDateTime();
+        //checkDateTime();
         setColorSemaforImage();
 
     }
