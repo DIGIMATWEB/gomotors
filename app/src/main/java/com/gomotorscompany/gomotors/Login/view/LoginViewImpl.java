@@ -99,7 +99,7 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
 
         imagecompany=view.findViewById(R.id.img_login_icon);
         version =view.findViewById(R.id.version);
-        version.setText("V"+"0.1.51");
+        version.setText("V"+"0.1.5");
         textInputLayoutUser = view.findViewById(R.id.til_user);
         textInputLayoutPass = view.findViewById(R.id.til_password);
         edtUserOrEmail = view.findViewById(R.id.edtUserOrEmail);
