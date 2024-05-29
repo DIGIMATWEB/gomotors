@@ -56,7 +56,7 @@ private  FragmentNavigationButtonsMenu fg;
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
         setContentView(R.layout.dinamic_menu);
-
+        askNotificationPermission();
 
         SharedPreferences preferencias = getApplicationContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
         String gerarquia = preferencias.getString(GeneralConstantsV2.LEVEL_PERMISIONS, null);
@@ -307,7 +307,7 @@ private  FragmentNavigationButtonsMenu fg;
 
     private void askNotificationPermission() {
         // This is only necessary for API level >= 33 (TIRAMISU)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
                     PackageManager.PERMISSION_GRANTED) {
                 // FCM SDK (and your app) can post notifications.
