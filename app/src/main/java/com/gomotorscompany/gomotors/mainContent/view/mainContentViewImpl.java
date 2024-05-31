@@ -2,6 +2,7 @@ package com.gomotorscompany.gomotors.mainContent.view;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -15,13 +16,12 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.gomotorscompany.gomotors.Login.view.LoginContainer;
-import com.gomotorscompany.gomotors.MyFirebaseMessagingService;
 import com.gomotorscompany.gomotors.Ordenar.model.newmenu.Complemento;
 import com.gomotorscompany.gomotors.Ordenar.view.ordenarViewImpl;
 import com.gomotorscompany.gomotors.R;
@@ -111,8 +111,7 @@ private  FragmentNavigationButtonsMenu fg;
                         if (!task.isSuccessful()) {
                             msg = "Subscribe failed";
                         }
-                        Log.e("firebase","suscription: "+ msg);
-                        //Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                        Log.e("firebase", "suscription: " + msg);
                     }
                 });
 
@@ -125,14 +124,9 @@ private  FragmentNavigationButtonsMenu fg;
                             return;
                         }
 
-                        // Get new FCM registration token
                         String token = task.getResult();
-
-                        // Log and toast
-                        String msg = token;
-                        Log.d("tokenfirebase", msg);
-                        Log.e("firebase","token firebase: "+msg);
-                                //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        Log.d("tokenfirebase", token);
+                        Log.e("firebase", "token firebase: " + token);
                     }
                 });
         //endregion firebase
@@ -298,29 +292,38 @@ private  FragmentNavigationButtonsMenu fg;
 //region firebase
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-                if (isGranted) {
-                    // FCM SDK (and your app) can post notifications.
-                } else {
-                    // TODO: Inform user that that your app will not show notifications.
+                if (!isGranted) {
+                    // Inform user that your app will not show notifications.
+                    Toast.makeText(context, "No se pudiron habilitar las notificaciones", Toast.LENGTH_SHORT).show();
                 }
             });
 
     private void askNotificationPermission() {
-        // This is only necessary for API level >= 33 (TIRAMISU)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) !=
                     PackageManager.PERMISSION_GRANTED) {
-                // FCM SDK (and your app) can post notifications.
-            } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
-                // TODO: display an educational UI explaining to the user the features that will be enabled
-                //       by them granting the POST_NOTIFICATION permission. This UI should provide the user
-                //       "OK" and "No thanks" buttons. If the user selects "OK," directly request the permission.
-                //       If the user selects "No thanks," allow the user to continue without notifications.
-            } else {
-                // Directly ask for the permission
-                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+                // Inform the user about why you need notification permissions
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Notification Permissions");
+                builder.setMessage("To receive important updates and alerts, please enable notification permissions.");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Request notification permissions
+                        requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Handle permission denied by user
+                        // You can provide instructions or inform the user about the consequences of denying
+                        Toast.makeText(getApplicationContext(), "Notifications disabled. You may miss important updates.", Toast.LENGTH_LONG).show();
+                    }
+                });
+                builder.show();
             }
         }
-      }
+    }
       //endregion
     }

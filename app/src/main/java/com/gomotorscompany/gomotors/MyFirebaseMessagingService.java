@@ -26,53 +26,20 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        // TODO(developer): Handle FCM messages here.
-        // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d(TAG, "From: " + remoteMessage.getFrom());
 
-        // Check if message contains a data payload.
-//        if (remoteMessage.getData().size() > 0) {
-//            Log.d(TAG, "Message data payload: " + remoteMessage.getData());
-//
-//            if (/* Check if data needs to be processed by long running job */ true) {
-//                // For long-running tasks (10 seconds or more) use WorkManager.
-//                scheduleJob();
-//            } else {
-//                // Handle message within 10 seconds
-//                handleNow();
-//            }
-//
-//        }
-
-        // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.e(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            sendNotification(remoteMessage.getNotification().getBody());
         }
-
-        // Also if you intend on generating your own notifications as a result of a received FCM
-        // message, here is where that should be initiated. See sendNotification method below.
-        //sendNotification(remoteMessage.getFrom(), remoteMessage.getNotification().getBody());
-        sendNotification(remoteMessage.getNotification().getBody());
     }
 
-    private void sendNotification(String from, String body) {
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-
-            @Override
-            public void run() {
-                Toast.makeText(MyFirebaseMessagingService.this, from +"  --D"+body, Toast.LENGTH_SHORT).show();
-            }
-
-        });
-
-    }
-   /* private void sendNotification(String messageBody) {
+    private void sendNotification(String messageBody) {
         Intent intent = new Intent(this, mainContentViewImpl.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 , intent,
-                PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
-        String channelId = "My channel ID";//"fcm_default_channel";
+        String channelId = "My channel ID";
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
@@ -86,7 +53,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        // Since android Oreo notification channel is needed.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(channelId,
                     "Channel human readable title",
@@ -94,34 +60,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notificationManager.createNotificationChannel(channel);
         }
 
-        notificationManager.notify(0 , notificationBuilder.build());
-    }*/
-   private void sendNotification(String messageBody) {//todo revisar
-       Intent intent = new Intent(this, mainContentViewImpl.class);
-       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-       PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
-       String channelId = "My channel ID";
-       Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-       NotificationCompat.Builder notificationBuilder =
-               new NotificationCompat.Builder(this, channelId)
-                       .setContentTitle("Go motors")
-                       .setSmallIcon(R.mipmap.ic_logo)
-                       .setContentText(messageBody)
-                       .setAutoCancel(true)
-                       .setSound(defaultSoundUri)
-                       .setContentIntent(pendingIntent);
-
-       NotificationManager notificationManager =
-               (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-       // Since android Oreo notification channel is needed.
-       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-           NotificationChannel channel = new NotificationChannel(channelId, "Channel human readable title", NotificationManager.IMPORTANCE_DEFAULT);
-           notificationManager.createNotificationChannel(channel);
-       }
-
-       notificationManager.notify(0, notificationBuilder.build());
-   }
-
+        notificationManager.notify(0, notificationBuilder.build());
+    }
 }
