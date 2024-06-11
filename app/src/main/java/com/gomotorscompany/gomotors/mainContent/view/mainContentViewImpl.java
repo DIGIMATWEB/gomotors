@@ -304,21 +304,21 @@ private  FragmentNavigationButtonsMenu fg;
                     PackageManager.PERMISSION_GRANTED) {
                 // Inform the user about why you need notification permissions
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Notification Permissions");
-                builder.setMessage("To receive important updates and alerts, please enable notification permissions.");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                builder.setTitle("Permisos de notificacion");
+                builder.setMessage("Para recibir actualizacion de las notificaciones, porfavor habilite los permisos solicitados.");
+                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Request notification permissions
                         requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
                     }
                 });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Handle permission denied by user
                         // You can provide instructions or inform the user about the consequences of denying
-                        Toast.makeText(getApplicationContext(), "Notifications disabled. You may miss important updates.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Notificaciones desactivadas. No podras recibir informacion", Toast.LENGTH_LONG).show();
                     }
                 });
                 builder.show();
