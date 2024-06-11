@@ -258,7 +258,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
             buttonenpointOrder2.setVisibility(View.VISIBLE);
             Glide.with(context).load(R.drawable.ic_goblack).into(imagesemaforo) ;
             buttonenpointOrder2.setText("Recolectar");/**  aceptar orden*/
-
+            button.setText("GPS NEGOCIO");
             viewrecolectar.setBackground(blackdot);
             viewEncola.setBackground(whitedot);
             viewenprogreso.setBackground(whitedot);
@@ -276,8 +276,10 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         else if(semaforodelaorden==2)
         {
             buttonenpointOrder2.setVisibility(View.GONE);
+
             Glide.with(context).load(R.drawable.ic_gogray).into(imagesemaforo) ;//ic_pizzastatus1recolectar
             buttonenpointOrder2.setText("Recolectado");//En cola
+            button.setText("GPS NEGOCIO");
             viewrecolectar.setBackground(blackdot);
             viewEncola.setBackground(whitedot);
             viewenprogreso.setBackground(whitedot);
@@ -293,6 +295,7 @@ public class progresodetail extends AppCompatActivity implements View.OnClickLis
         }else if(semaforodelaorden==3)
         {
             buttonenpointOrder2.setVisibility(View.VISIBLE);
+            button.setText("GPS CLIENTE");
             Glide.with(context).load(R.drawable.ic_goyellow).into(imagesemaforo) ;//ic_pizzastatus2encola
             buttonenpointOrder2.setText("En camino");//en progreso
             viewrecolectar.setBackground(blackdot);

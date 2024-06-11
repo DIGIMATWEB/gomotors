@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -200,7 +201,7 @@
         <entry key="app/src/main/res/layout/asignando_pedido.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/bottom_sheet_map.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/chat_layout.xml" value="0.18385416666666668" />
-        <entry key="app/src/main/res/layout/detail_order.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/detail_order.xml" value="0.5077720207253886" />
         <entry key="app/src/main/res/layout/detail_order_progress.xml" value="0.33" />
         <entry key="app/src/main/res/layout/en_ordenes.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/en_progreso.xml" value="0.33" />
