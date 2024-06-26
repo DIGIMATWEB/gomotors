@@ -142,7 +142,7 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
 
         presenter = new LoginPresenterImpl(this,getContext());
         presenter.setView(this);
-        presenter.getAvailable();
+       // presenter.getAvailable();
         disabledTextInputAnimation();
 
 
